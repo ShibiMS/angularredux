@@ -1,0 +1,48 @@
+<div id="fybrLogin" fxLayout="row wrap" fxFlex="100">
+    <div fxFlex="75" fxLayout="row wrap" fxLayoutAlign="start center" class="leftSidecontent">
+        <div fxFlex="100" fxLayout="row wrap" class="leftbgImage">
+            <img src="../../assets/bgfybr.png">
+        </div>
+        <div class="bgtopcontent" fxFlex="100" fxLayout="row wrap">
+            <h3 fxFlex="100">WELCOME TO FYBR</h3>
+            <div class="fbloginbtn" fxFlex="100" fxLayout="row wrap">
+                <div class="fbicon" fxFlex="100" fxLayout="row wrap">
+                    <img src="../../assets/iconleft.png">
+                </div>
+                <!-- <button mat-flat-button>log in with facebook</button> -->
+                <app-fybrbuttons [disable]="false" [buttonConfig]="fbloginBtnConfig" (fbloginBtnClickEmt)="onClickEventReceived($event)">
+                </app-fybrbuttons>
+            </div>
+            <div fxFlex="100" fxLayout="row wrap" class="pwdforgotlink">
+                <p>forgotten your password?</p>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="25" fxLayout="row wrap" fxLayoutAlign="start center" class="rightContent">
+        <div class="rightsidelogo" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+            <img src="../../assets/fybrlogo.png">
+        </div>
+        <form [formGroup]="loginForm">
+            <div fxFlex="100" fxLayout="row wrap">
+                <div fxFlex="100" fxLayout="row wrap" class="inputfield" fxLayoutAlign="center">
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="log in with email address" formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxLayout="row wrap" class="inputfield" fxLayoutAlign="center">
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="password" formControlName="password">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100" fxLayout="row wrap" class="inputfield" fxLayoutAlign="center">
+                    <!-- <button mat-flat-button>LOG IN</button> -->
+                    <app-fybrbuttons  [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
+                    </app-fybrbuttons>
+                </div>
+                <div fxFlex="100" fxLayout="row wrap" class="signuplink" fxLayoutAlign="center">
+                    <p>Don't have an Account? <a>Sign Up</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

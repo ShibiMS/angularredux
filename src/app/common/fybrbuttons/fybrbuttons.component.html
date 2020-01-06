@@ -1,0 +1,16 @@
+<!-- <ng-container *ngTemplateOutlet="buttonConfig['text'] ? text : image">
+</ng-container> -->
+
+<!-- Text Button -->
+<div *ngIf="buttonConfig.action === 'login'" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
+    <button mat-flat-button (click)="onloginBtnClick()">
+        {{ buttonConfig.text | uppercase}}
+    </button>
+</div>
+
+<!-- Image Button -->
+<div *ngIf="buttonConfig.action === 'fblogin'" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="fbloginbtn">
+    <button mat-flat-button (click)="onfbloginBtnClick()">
+        {{ buttonConfig.text}}
+    </button>
+</div>
