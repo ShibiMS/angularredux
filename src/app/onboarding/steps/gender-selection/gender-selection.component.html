@@ -1,0 +1,48 @@
+<div id="genderselectstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Sex
+        <span class="stepTitlerequired">*required</span>
+    </h3>
+    <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">
+        <mat-card-title>Hi, [name].<br />Nice to meet you!</mat-card-title>
+        <p>We want to tailor your experience to your body. Which is best for you?</p>
+
+        <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutGap="5%"
+            fxLayoutAlign="center">
+            <label fxFlex="45" fxLayout="row wrap" fxLayoutAlign="center">
+                <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+                    <mat-radio-button #malebtn value="1"></mat-radio-button>
+                    <span *ngIf="malebtn.checked else malenotchecked">
+                        <img src="../../../../assets/male-selected.svg">
+                    </span>
+                    <ng-template #malenotchecked>
+                        <span>
+                            <img src="../../../../assets/male.svg">
+                        </span>
+                    </ng-template>
+                    <p>Male</p>
+                </mat-card>
+            </label>
+            <label fxFlex="45" fxLayout="row wrap" fxLayoutAlign="center">
+                <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+                    <mat-radio-button #femalebtn value="2"></mat-radio-button>
+                    <span *ngIf="femalebtn.checked else femalenotchecked">
+                        <img src="../../../../assets/female-selected.svg">
+                    </span>
+                    <ng-template #femalenotchecked>
+                        <span>
+                            <img src="../../../../assets/female.svg">
+                        </span>
+                    </ng-template>
+                    <p>Female</p>
+                </mat-card>
+            </label>
+        </mat-radio-group>
+
+        <p>
+            <mat-icon>help_outline</mat-icon>why we ask this
+        </p>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
+            <button mat-button matStepperNext>NEXT</button>
+        </div>
+    </mat-card>
+</div>

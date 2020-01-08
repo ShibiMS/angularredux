@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from "@ngrx/store";
+import { Store, State, select } from "@ngrx/store";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import * as loginActions from "./state/login.actions"; 
 
 @Component({
   selector: 'app-login',
@@ -38,7 +38,14 @@ export class LoginComponent implements OnInit {
     this.loginmessage = event;
     if (this.loginmessage === 'LOGIN') {
       console.log(this.loginForm.value);
-      this.store.dispatch({type: 'LOGIN', loginData: this.loginForm.value});
+      const userlogin: any = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+        userType: 1
+      };
+      console.log(userlogin,'userlogin');
+      this.store.dispatch(new loginActions.LoginUsers(userlogin));
+     // this.loginForm.reset();
     } else {
       this.store.dispatch({type: 'FBLOGIN'});
     }

@@ -1,0 +1,65 @@
+<div id="fybr-onboard-steps" fxLayout="row wrap" fxFlex="100">
+    <div fxFlex="100" fxLayout="row wrap" class="stepbgimage">
+        <img src="../../../assets/bgfybr.png">
+    </div>
+    <div fxFlex="100" fxLayout="row wrap" class="logotop">
+        <img src="../../../assets/fybrwhite.png">
+    </div>
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="fybrstepsmatProgress">
+        <mat-progress-bar fxFlex="85" fxLayout="row wrap" fxLayoutAlign="center" 
+        class="example-margin"        
+        [mode]="mode"
+        [value]="value" 
+        [bufferValue]="bufferValue">
+        </mat-progress-bar>
+    </div>
+    <div class="stepsContent" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center">        
+        <mat-horizontal-stepper #stepper>
+            <mat-step>
+                <app-welcome>                    
+                </app-welcome>                
+            </mat-step>
+            <mat-step>            
+                <app-gender-selection></app-gender-selection>
+            </mat-step>
+            <mat-step>
+                <app-age-selection>                    
+                </app-age-selection>
+            </mat-step>
+            <mat-step>
+                <app-height-selection>                    
+                </app-height-selection>
+            </mat-step>
+            <mat-step>
+                <app-weight-selection>                    
+                </app-weight-selection>
+            </mat-step>
+            <mat-step>
+                <app-basics-cover>                    
+                </app-basics-cover>
+            </mat-step>
+            <mat-step>
+                <app-progress-selection>                    
+                </app-progress-selection>
+            </mat-step>
+            <mat-step>
+                <app-photo-upload-section>                    
+                </app-photo-upload-section>
+            </mat-step>
+            <mat-step>
+                <app-body-measurement>                    
+                </app-body-measurement>
+            </mat-step>
+            <mat-step>
+                <app-weight-selection-extra></app-weight-selection-extra>
+            </mat-step>
+            <mat-step>
+                <app-physique-goals></app-physique-goals>
+            </mat-step>
+            <mat-step>
+                <app-activity-level></app-activity-level>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+   
+</div>

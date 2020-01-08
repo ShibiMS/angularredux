@@ -1,19 +1,19 @@
 #fybrLogin {
-    height: max-content;
+  height: max-content;
   .leftSidecontent {
     position: relative;
     .leftbgImage {
       position: relative;
       img {
-        width: 100%;    
-        height: 100vh;    
+        width: 100%;
+        height: 100vh;
         object-fit: cover;
       }
     }
     .bgtopcontent {
       position: absolute;
       left: 10%;
-      top:30%;
+      top: 30%;
       h3 {
         font-size: 32px;
         color: #ffffff;
@@ -40,11 +40,13 @@
         }
       }
     }
-    .pwdforgotlink{
-        p{
-            color:#fff;
-            margin-top :180px;
-        }
+    .pwdforgotlink {
+      p {
+        color: #fff;
+        margin-top: 180px;
+        text-decoration: underline;
+        font-weight: bold;
+      }
     }
   }
   .rightContent {
@@ -62,14 +64,17 @@
       .mat-form-field {
         width: 270px;
       }
-      .mat-flat-button{
+      .mat-flat-button {
         width: 270px;
         background-color: #334d7e;
-        color:#fff;
-      }      
+        color: #fff;
+      }
     }
-    .signuplink{
-        margin-top:120px;
+    .signuplink {
+      margin-top: 120px;
+      a{ 
+        color: #334d7e;
+      }
     }
   }
 }

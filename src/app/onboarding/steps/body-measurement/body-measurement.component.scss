@@ -1,0 +1,39 @@
+#bodymeasurestep{
+    .steps-card{
+        .mat-card-title,h3{
+            font-weight: normal; 
+            font-size: 18px;
+            color:#000000cc; 
+        }
+        .mat-card{
+            p{
+                margin:10px;
+            }
+        }
+        .mat-form-field {
+            width: 270px;
+          }
+          .mat-button {
+            width: 270px;
+            background-color: #334d7e;
+            color: #fff;
+          }
+      .loginbtn{
+          p{
+              color:#334d7e;
+              text-decoration: underline;
+          }
+      }  
+      p{
+        margin:10px;
+    }  
+    .photoupload{
+        img{
+            width:50%
+        }
+    }
+    .mat-slide-toggle{       
+      margin:0 10px;  
+    }
+    }
+}

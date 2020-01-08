@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>female-selected</title>
+    <desc>Created with Sketch.</desc>
+    <g id="0.-Onboarding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="onboarding-icons" transform="translate(-266.000000, -13.000000)">
+            <g id="female-selected" transform="translate(266.000000, 13.000000)">
+                <circle id="Oval" fill="#FAF9F7" cx="30" cy="30" r="30"></circle>
+                <circle id="Oval-Copy" fill="#334D7E" cx="30" cy="30" r="30"></circle>
+                <g id="icon/sex/female" transform="translate(12.000000, 12.000000)" fill="#FFFFFF">
+                    <path d="M18,3.6 C22.9705627,3.6 27,7.62943725 27,12.6 C27,17.2665853 23.4483375,21.1036353 18.9006666,21.5554961 L18.9,26.1 L22.95,26.1 C23.4470563,26.1 23.85,26.5029437 23.85,27 C23.85,27.4744628 23.482855,27.8631743 23.0171681,27.8975314 L22.95,27.9 L18.9,27.9 L18.9,31.95 C18.9,32.4470563 18.4970563,32.85 18,32.85 C17.5255372,32.85 17.1368257,32.482855 17.1024686,32.0171681 L17.1,31.95 L17.1,27.9 L13.05,27.9 C12.5529437,27.9 12.15,27.4970563 12.15,27 C12.15,26.5255372 12.517145,26.1368257 12.9828319,26.1024686 L13.05,26.1 L17.1,26.1 L17.1003353,21.5555956 C12.5521842,21.1041989 9,17.266928 9,12.6 C9,7.62943725 13.0294373,3.6 18,3.6 Z M18,5.4 C14.0235498,5.4 10.8,8.6235498 10.8,12.6 C10.8,16.5764502 14.0235498,19.8 18,19.8 C21.9764502,19.8 25.2,16.5764502 25.2,12.6 C25.2,8.6235498 21.9764502,5.4 18,5.4 Z" id="icon"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
