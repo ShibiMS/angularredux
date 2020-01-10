@@ -1,0 +1,50 @@
+#fitnessgoalstep{
+    .steps-card{
+        .mat-card-title,h3{
+            font-weight: normal; 
+            font-size: 18px;
+            color:#000000cc; 
+        }
+        .mat-card{
+            position: relative;
+            p{
+                margin:10px;
+            }
+        }
+        .mat-radio-group{
+            label{
+                position: relative;            
+                .mat-radio-button{
+                    width: 100%;
+                    height: 100%;
+                    z-index: 999;
+                    position: absolute;
+                    top: 0; 
+                    opacity: 0;
+                    .mat-radio-label{
+                        height: 100%;
+                    }
+                }
+            }
+            
+          }
+        .mat-form-field {
+            width: 270px;
+          }
+          .mat-button {
+            width: 270px;
+            background-color: #334d7e;
+            color: #fff;
+          }
+      .loginbtn{
+          p{
+              color:#334d7e;
+              text-decoration: underline;
+          }
+      }  
+      p{
+        margin:10px;
+    }     
+    }
+    
+}

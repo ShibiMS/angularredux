@@ -14,16 +14,16 @@
         </mat-progress-bar>
     </div>
     <div class="stepsContent" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center">        
-        <mat-horizontal-stepper #stepper>
+        <mat-horizontal-stepper #stepper> 
             <mat-step>
-                <app-welcome>                    
+                <app-welcome [stepper]="stepper">                    
                 </app-welcome>                
             </mat-step>
             <mat-step>            
-                <app-gender-selection></app-gender-selection>
+                <app-gender-selection [stepper]="stepper"></app-gender-selection>
             </mat-step>
             <mat-step>
-                <app-age-selection>                    
+                <app-age-selection [stepper]="stepper">                    
                 </app-age-selection>
             </mat-step>
             <mat-step>
@@ -58,6 +58,21 @@
             </mat-step>
             <mat-step>
                 <app-activity-level></app-activity-level>
+            </mat-step>
+            <mat-step>
+                <app-workouts></app-workouts>
+            </mat-step>
+            <mat-step>
+                <app-fitness-goal></app-fitness-goal>
+            </mat-step>
+            <mat-step>
+                <app-toolkit></app-toolkit>
+            </mat-step>
+            <mat-step>
+                <app-activities></app-activities>
+            </mat-step>
+            <mat-step>
+                <app-dietrestriction></app-dietrestriction>
             </mat-step>
         </mat-horizontal-stepper>
     </div>

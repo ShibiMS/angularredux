@@ -26,6 +26,18 @@ import { BodyMeasurementModule } from './body-measurement/body-measurement.modul
 import { WeightSelectionExtraModule } from './weight-selection-extra/weight-selection-extra.module';
 import { PhysiqueGoalsModule } from './physique-goals/physique-goals.module';
 import { ActivityLevelModule } from './activity-level/activity-level.module';
+import { WorkoutsModule } from './workouts/workouts.module';
+import { FitnessGoalModule } from './fitness-goal/fitness-goal.module';
+import { ToolkitModule } from './toolkit/toolkit.module';
+import { ActivitiesModule } from './activities/activities.module';
+import { YourfoodModule } from './yourfood/yourfood.module';
+import { DietrestrictionModule } from './dietrestriction/dietrestriction.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { stepReducer } from './state/steps.reducers';
+import { StepEffect } from './state/steps.effects';
+import { PassInterceptor } from 'src/app/pass.interceptor';
 
 const stepRoute: Routes = [
   { path: 'steps', component: StepsComponent },
@@ -35,6 +47,9 @@ const stepRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(stepRoute),
+    StoreModule.forFeature('steps', stepReducer),
+    EffectsModule.forRoot([StepEffect]),
+    HttpClientModule,
     MatStepperModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -56,7 +71,21 @@ const stepRoute: Routes = [
     BodyMeasurementModule,
     WeightSelectionExtraModule,
     PhysiqueGoalsModule,
-    ActivityLevelModule
-  ]
+    ActivityLevelModule,
+    WorkoutsModule,
+    FitnessGoalModule,
+    ToolkitModule,
+    ActivitiesModule,
+    YourfoodModule,
+    DietrestrictionModule
+  ],
+  providers: [ HttpClientModule,
+  //   PassInterceptor,
+  // {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: PassInterceptor,
+  //     multi: true
+  //   } 
+]
 })
 export class StepsModule { }

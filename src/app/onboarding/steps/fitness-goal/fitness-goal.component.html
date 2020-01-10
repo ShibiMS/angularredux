@@ -1,0 +1,46 @@
+<div id="fitnessgoalstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">FITNESS GOALS
+        <span class="stepTitlerequired">Skip</span>
+    </h3>
+    <mat-card class="steps-card" fxFlex="25" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
+        <mat-card-title>What are your fitness goals?</mat-card-title>
+        <mat-card-subtitle>Pick any you'd like to work on.</mat-card-subtitle>
+        <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+            <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+            <mat-radio-button value="1" #fitnessgoal1></mat-radio-button>
+                <mat-card fxFlex="100" fxLayout="row wrap">
+                    <span *ngIf="fitnessgoal1.checked else fitnessgoal1notchecked">
+                    <img mat-card-avatar src="../../../../assets/endurance-selected.svg">
+                   </span>
+                   <ng-template #fitnessgoal1notchecked>
+                       <span>
+                           <img mat-card-avatar src="../../../../assets/endurance.svg">
+                       </span>
+                   </ng-template>
+                    <p>Improve my cardio fitness</p>
+                </mat-card>
+            </label>
+            <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+            <mat-radio-button value="2" #fitnessgoal2></mat-radio-button>
+                <mat-card fxFlex="100" fxLayout="row wrap">
+                    <span *ngIf="fitnessgoal2.checked else fitnessgoal2notchecked">
+                    <img mat-card-avatar src="../../../../assets/strength-selected.svg">
+                   </span>
+                   <ng-template #fitnessgoal2notchecked>
+                       <span>
+                           <img mat-card-avatar src="../../../../assets/strength.svg">
+                       </span>
+                   </ng-template>
+                    <p>get stronger</p>
+                </mat-card>
+            </label>
+        </mat-radio-group>
+
+        <p>
+            <mat-icon>help_outline</mat-icon>What do these mean?
+        </p>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
+            <button mat-button matStepperNext>NEXT</button>
+        </div>
+    </mat-card>
+</div>

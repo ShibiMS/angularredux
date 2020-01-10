@@ -66,4 +66,13 @@
       position: absolute;
     }
   }
+  .helptext{
+    position: relative;
+    mat-icon{
+      line-height: 24px;
+      position: absolute;
+      left: -30px;
+      top: -3px;
+    }
+  }
 }

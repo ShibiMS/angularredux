@@ -1,2 +1,17 @@
-<p>activity-level works!</p>
-<button mat-button matStepperNext>NEXT</button> 
+<div id="activitystep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">ACTIVITIES
+        <span class="stepTitlerequired">skip</span>
+    </h3>
+    <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">
+        <mat-card-title>Not including workouts, how<br/>much do you move your<br/> body?</mat-card-title>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" class="slidercustom">
+            <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+        </div>
+        <p class="helptext">
+            <mat-icon>help_outline</mat-icon>Why we ask this?
+        </p>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
+            <button mat-button matStepperNext>NEXT</button>
+        </div>
+    </mat-card>
+</div>

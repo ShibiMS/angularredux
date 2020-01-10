@@ -2,10 +2,11 @@
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Age
       <span class="stepTitlerequired">*required</span>
     </h3>
+    <form [formGroup]="ageForm"  fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">        
       <mat-card-title>What year were you born?</mat-card-title>       
        <mat-form-field appearance="outline">        
-        <mat-select [(ngModel)]="selectedValue" name="year">
+        <mat-select [(ngModel)]="selectedValue" formControlName="ageoptions">
             <mat-option *ngFor="let year of years" [value]="year.year">
               {{year.year}}
             </mat-option>
@@ -15,8 +16,9 @@
     <!-- <app-fybrbuttons mat-button matStepperNext [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
     </app-fybrbuttons>  -->
     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-      <button mat-button matStepperNext>NEXT</button>
+      <button mat-button matStepperNext (click)="ageSubmit()">NEXT</button>
     </div>
     </mat-card>
+    </form>
   </div>
   

@@ -2,15 +2,16 @@
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Sex
         <span class="stepTitlerequired">*required</span>
     </h3>
+    <form [formGroup]="genderForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">   
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">
         <mat-card-title>Hi, [name].<br />Nice to meet you!</mat-card-title>
         <p>We want to tailor your experience to your body. Which is best for you?</p>
 
-        <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutGap="5%"
+        <mat-radio-group formControlName="genderoptions" aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutGap="5%"
             fxLayoutAlign="center">
             <label fxFlex="45" fxLayout="row wrap" fxLayoutAlign="center">
                 <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-                    <mat-radio-button #malebtn value="1"></mat-radio-button>
+                    <mat-radio-button #malebtn value="Male"></mat-radio-button>
                     <span *ngIf="malebtn.checked else malenotchecked">
                         <img src="../../../../assets/male-selected.svg">
                     </span>
@@ -24,7 +25,7 @@
             </label>
             <label fxFlex="45" fxLayout="row wrap" fxLayoutAlign="center">
                 <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-                    <mat-radio-button #femalebtn value="2"></mat-radio-button>
+                    <mat-radio-button #femalebtn value="female"></mat-radio-button>
                     <span *ngIf="femalebtn.checked else femalenotchecked">
                         <img src="../../../../assets/female-selected.svg">
                     </span>
@@ -38,11 +39,12 @@
             </label>
         </mat-radio-group>
 
-        <p>
+        <p class="helptext">
             <mat-icon>help_outline</mat-icon>why we ask this
         </p>
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext>NEXT</button>
+            <button mat-button (click)="genderSubmit();">NEXT</button>
         </div>
     </mat-card>
+    </form>
 </div>

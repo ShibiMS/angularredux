@@ -1,0 +1,90 @@
+<div id="youfoodstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Your Food
+    </h3>
+    <mat-card class="steps-card" fxFlex="45" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
+        <mat-card-title>Assuming life doesn't get in the way, which meals will you eat each day?</mat-card-title>        
+        <div fxFlex="100" fxLayout="row wrap" class="activitiesstrength">            
+            <div fxFlex="100" fxLayoutGap="2%" fxLayout="row wrap">            
+            <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">                    
+                    <div fxFlex="30" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="start center">
+                    <label>
+                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <span *ngIf="bw1.checked else bw1notcheck">
+                            <img src="../../../../assets/breakfast-selected.svg">                        
+                        </span>
+                        <ng-template #bw1notcheck>
+                            <span>
+                                <img src="../../../../assets/breakfast.svg">
+                            </span>
+                        </ng-template>
+                    </label>                                       
+                </div>
+                <p fxFlex="45" fxLayout="row wrap">breakfast</p>
+                </mat-card>
+            </div>
+            <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                    <div fxFlex="30" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="start center">
+                    <label>
+                        <mat-checkbox #bw11 value="11"></mat-checkbox>
+                        <span *ngIf="bw11.checked else bw11notcheck">
+                            <img src="../../../../assets/treat-selected.svg">                        
+                        </span>
+                        <ng-template #bw11notcheck>
+                            <span>
+                                <img src="../../../../assets/treat.svg">
+                            </span>
+                        </ng-template>
+                    </label>                  
+                </div>
+                <p fxFlex="45" fxLayout="row wrap">dinner</p>
+                </mat-card>
+            </div>
+           </div>
+           <div fxFlex="100" fxLayoutGap="2%" fxLayout="row wrap">            
+            <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">                    
+                    <div fxFlex="30" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="start center">
+                    <label>
+                        <mat-checkbox #bw13 value="13"></mat-checkbox>
+                        <span *ngIf="bw13.checked else bw13notcheck">
+                            <img src="../../../../assets/lunch-selected.svg">                        
+                        </span>
+                        <ng-template #bw13notcheck>
+                            <span>
+                                <img src="../../../../assets/lunch.svg">
+                            </span>
+                        </ng-template>
+                    </label>
+                </div>
+                <p fxFlex="45" fxLayout="row wrap">lunch</p>  
+                </mat-card>
+            </div>
+            <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                    <div fxFlex="30" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="start center">
+                    <label>
+                        <mat-checkbox #bw4 value="11"></mat-checkbox>
+                        <span *ngIf="bw4.checked else bw4notcheck">
+                            <img src="../../../../assets/treat-selected.svg">                        
+                        </span>
+                        <ng-template #bw4notcheck>
+                            <span>
+                                <img src="../../../../assets/treat.svg">
+                            </span>
+                        </ng-template>
+                    </label>                  
+                </div>
+                <p fxFlex="45" fxLayout="row wrap">treat</p>
+                
+                </mat-card>
+            </div>
+           </div>
+        </div>
+                
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
+            <button mat-button matStepperNext>NEXT</button>
+        </div>
+    </mat-card>
+</div>

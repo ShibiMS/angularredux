@@ -1,0 +1,53 @@
+#activitystep{
+    .steps-card{
+        .mat-card-title,h3{
+            font-weight: normal; 
+            font-size: 18px;
+            color:#000000cc; 
+        }
+        .mat-form-field {
+            width: 270px;
+          }
+          .mat-button {
+            width: 270px;
+            background-color: #334d7e;
+            color: #fff;
+          }
+      .loginbtn{
+          p{
+              color:#334d7e;
+              text-decoration: underline;
+          }
+      }
+      .slidercustom{       
+        padding: 0 15px;
+        margin-bottom: 100px;
+        .ng5-slider-tick{
+            background: transparent;
+        } 
+      }  
+    }
+    .ng5-slider .ng5-slider-tick{
+        background: transparent !important;
+        left: -27px;
+        width: 65%;
+    }
+    .ng5-slider .ng5-slider-tick-value{
+        opacity: 0;
+    }
+    .ng5-slider .ng5-slider-tick-legend{
+        top:50px;
+        max-width:85px;
+        transform: translate(-100%,0);
+        width: 85px;
+        white-space: normal;
+    }
+    .ng5-slider {
+        .ng5-slider-pointer {
+          background: url('../../../../assets/moveselector-selected.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+
+        }
+    }
+}

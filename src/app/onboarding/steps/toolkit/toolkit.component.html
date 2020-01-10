@@ -1,0 +1,134 @@
+<div id="toolkitstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">TOOLKIT
+    </h3>
+    <mat-card class="steps-card" fxFlex="60" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
+        <mat-card-title>Do you have access to a commercial gym?</mat-card-title>
+        <mat-card-subtitle>(a regular gym with threadmills, weight machines, people taking selfies<br/>instead of working out,etc)</mat-card-subtitle>        
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+            <span>no</span><mat-slide-toggle></mat-slide-toggle><span>yes</span>
+        </div>
+        <mat-card-title>Do you like(or want to try) boutique studios?</mat-card-title>
+        <mat-card-subtitle>(a smaller gym that might run yoga classes, pilates, spin, etc.)</mat-card-subtitle>        
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+            <span>no</span><mat-slide-toggle></mat-slide-toggle><span>yes</span>
+        </div>
+        <mat-card-title>Do you have any of the following stuff at home?</mat-card-title>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+
+           <div fxFlex="31" fxLayout="row wrap" fxLayoutAlign="center">
+                <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+                    <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                    <mat-radio-button value="1" #toolkit1></mat-radio-button>
+                        <mat-card fxFlex="100" fxLayout="row wrap" class="homestuff">
+                            <span class="imgoutter" *ngIf="toolkit1.checked else toolkit1notchecked">
+                            <img  src="../../../../assets/dumbbells.svg">
+                           </span>
+                           <ng-template #toolkit1notchecked>
+                               <span class="imgoutter">
+                                   <img  src="../../../../assets/dumbbells.svg">
+                               </span>
+                           </ng-template>
+                            <span>dumbells</span>
+                        </mat-card>
+                    </label>                   
+                </mat-radio-group>
+           </div> 
+           <div fxFlex="31" fxLayout="row wrap" fxLayoutAlign="center">
+            <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+                <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-radio-button value="1" #toolkit2></mat-radio-button>
+                    <mat-card fxFlex="100" fxLayout="row wrap" class="homestuff">
+                        <span class="imgoutter" *ngIf="toolkit1.checked else toolkit2notchecked">
+                        <img  src="../../../../assets/kettlebells.svg">
+                       </span>
+                       <ng-template #toolkit2notchecked>
+                           <span class="imgoutter">
+                               <img  src="../../../../assets/kettlebells.svg">
+                           </span>
+                       </ng-template>
+                        <span>kettlebells</span>
+                    </mat-card>
+                </label>                   
+            </mat-radio-group>
+            </div> 
+            <div fxFlex="31" fxLayout="row wrap" fxLayoutAlign="center">
+                <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+                    <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                    <mat-radio-button value="1" #toolkit3></mat-radio-button>
+                        <mat-card fxFlex="100" fxLayout="row wrap" class="homestuff">
+                            <span class="imgoutter" *ngIf="toolkit3.checked else toolkit3notchecked">
+                            <img  src="../../../../assets/resisstance bands.svg">
+                           </span>
+                           <ng-template #toolkit3notchecked>
+                               <span class="imgoutter">
+                                   <img  src="../../../../assets/resisstance bands.svg">
+                               </span>
+                           </ng-template>
+                            <span>resistance bands</span>
+                        </mat-card>
+                    </label>                   
+                </mat-radio-group>
+           </div> 
+        </div>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+
+            <div fxFlex="31" fxLayout="row wrap" fxLayoutAlign="center">
+                 <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+                     <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                     <mat-radio-button value="1" #toolkit1></mat-radio-button>
+                         <mat-card fxFlex="100" fxLayout="row wrap" class="homestuff">
+                             <span class="imgoutter" *ngIf="toolkit1.checked else toolkit1notchecked">
+                             <img  src="../../../../assets/spin bike.svg">
+                            </span>
+                            <ng-template #toolkit1notchecked>
+                                <span class="imgoutter">
+                                    <img  src="../../../../assets/spin bike.svg">
+                                </span>
+                            </ng-template>
+                             <span>spin bike</span>
+                         </mat-card>
+                     </label>                   
+                 </mat-radio-group>
+            </div> 
+            <div fxFlex="31" fxLayout="row wrap" fxLayoutAlign="center">
+             <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+                 <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                 <mat-radio-button value="1" #toolkit2></mat-radio-button>
+                     <mat-card fxFlex="100" fxLayout="row wrap" class="homestuff">
+                         <span class="imgoutter" *ngIf="toolkit1.checked else toolkit2notchecked">
+                         <img  src="../../../../assets/treadmill.svg">
+                        </span>
+                        <ng-template #toolkit2notchecked>
+                            <span class="imgoutter">
+                                <img  src="../../../../assets/treadmill.svg">
+                            </span>
+                        </ng-template>
+                         <span>treadmill</span>
+                     </mat-card>
+                 </label>                   
+             </mat-radio-group>
+             </div> 
+             <div fxFlex="31" fxLayout="row wrap" fxLayoutAlign="center">
+                 <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+                     <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                     <mat-radio-button value="1" #toolkit3></mat-radio-button>
+                         <mat-card fxFlex="100" fxLayout="row wrap" class="homestuff">
+                             <span class="imgoutter" *ngIf="toolkit3.checked else toolkit3notchecked">
+                             <img  src="../../../../assets/resisstance bands.svg">
+                            </span>
+                            <ng-template #toolkit3notchecked>
+                                <span class="imgoutter">
+                                    <img  src="../../../../assets/foam roller.svg">
+                                </span>
+                            </ng-template>
+                             <span>foam roller</span>
+                         </mat-card>
+                     </label>                   
+                 </mat-radio-group>
+            </div> 
+         </div>
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
+            <button mat-button matStepperNext>NEXT</button>
+        </div>
+    </mat-card>
+</div>

@@ -1,13 +1,12 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
 
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { Action } from "@ngrx/store";
+import { Observable, of } from 'rxjs';
+import { map, mergeMap, catchError, tap, switchMap } from 'rxjs/operators';
 
-import { Observable, of } from "rxjs";
-import { map, mergeMap, catchError, tap, switchMap } from "rxjs/operators";
-
-import { LoginService } from "../login.service";
-import * as loginActions from "../state/login.actions";
+import { LoginService } from '../login.service';
+import * as loginActions from '../state/login.actions';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -39,6 +38,7 @@ export class LoginEffect {
     ofType<loginActions.LoginUsersSuccess>(loginActions.LoginActionTypes.LOGIN_USERS_SUCCESS),
     tap((user: any) => {
      localStorage.setItem('token', user.payload.access_token);
+     localStorage.setItem('userid', user.payload.profile.id);     
       this.router.navigate(['/steps']);
     })
   );

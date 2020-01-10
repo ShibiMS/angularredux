@@ -1,2 +1,66 @@
-<p>weight-selection-extra works!</p>
-<button mat-button matStepperNext>NEXT</button> 
+<div id="weightselectionextrastep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center"> 
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Weight
+      <span class="stepTitlerequired">*required</span>
+    </h3>
+    <mat-card class="steps-card" fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center">        
+      <mat-card-title>How easily do you put on <br/>weight? Let's use donuts<br/> for reference.</mat-card-title>       
+         
+      <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+      <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="2%" fxLayoutAlign="center">
+      <label fxFlex="50" fxLayout="row wrap">
+        <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+              <mat-radio-button #weightreference1 value="1"></mat-radio-button>
+              <span fxFlex="20" *ngIf="weightreference1.checked else weightreference1notchecked">
+                  <img mat-card-avatar src="../../../../assets/donut1select.png">
+              </span>
+              <ng-template #weightreference1notchecked>
+                  <span fxFlex="20">
+                      <img mat-card-avatar src="../../../../assets/donut1.png">
+                  </span>
+              </ng-template>
+              <p fxFlex="80">I Just look at a donut and it shows up on my hips</p>
+        </mat-card>
+      </label>
+      <label fxFlex="48" fxLayout="row wrap" fxLayoutAlign="center">
+          <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+              <mat-radio-button #weightreference2 value="2"></mat-radio-button>
+              <span fxFlex="20" *ngIf="weightreference2.checked else weightreference2notchecked">
+                  <img mat-card-avatar src="../../../../assets/donut2select.png">
+              </span>
+              <ng-template #weightreference2notchecked>
+                  <span fxFlex="20">
+                      <img mat-card-avatar src="../../../../assets/donut2.png">
+                  </span>
+              </ng-template>
+              <p fxFlex="80">One or two is fine, but it'll show if I eat the whole box</p>
+          </mat-card>
+      </label>
+    </div>
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="2%" fxLayoutAlign="center" class="m-15">
+      <label fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center">
+        <mat-card fxFlex="100"  fxLayout="row wrap" fxLayoutAlign="start center">
+            <mat-radio-button #weightreference3 value="3"></mat-radio-button>
+            <span fxFlex="20" *ngIf="weightreference3.checked else weightreference3notchecked">
+                <img mat-card-avatar src="../../../../assets/donut3select.png">
+            </span>
+            <ng-template #weightreference3notchecked>
+                <span fxFlex="20">
+                    <img mat-card-avatar src="../../../../assets/donut3.png">
+                </span>
+            </ng-template>
+            <p fxFlex="80">I can eat a whole box and my body stays the same</p>
+        </mat-card>
+    </label>  
+    <label fxFlex="48" fxLayout="row wrap" fxLayoutAlign="center">        
+    </label>  
+    </div>  
+  </mat-radio-group>
+    <p class="helptext"><mat-icon>help_outline</mat-icon>What do these mean? </p>  
+    <!-- <app-fybrbuttons mat-button matStepperNext [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
+    </app-fybrbuttons>  -->
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
+      <button mat-button matStepperNext>NEXT</button>
+    </div>
+    </mat-card>
+</div>
+  

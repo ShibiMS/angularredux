@@ -4,6 +4,7 @@ import { ActivityLevelComponent } from './activity-level.component';
 import { MatFormFieldModule, MatStepperModule, MatButtonModule, MatInputModule, MatCardModule, MatIconModule, MatRadioModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatIconModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    Ng5SliderModule
   ],
   exports: [ActivityLevelComponent],
 

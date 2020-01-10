@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>tick</title>
+    <desc>Created with Sketch.</desc>
+    <g id="0.-Onboarding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="onboarding-icons-copy" transform="translate(-13.000000, -127.000000)">
+            <g id="tick" transform="translate(13.000000, 127.000000)">
+                <circle id="Oval" stroke="#E8E7E6" cx="15" cy="15" r="14.5"></circle>
+                <g id="icon/function/tick" transform="translate(5.000000, 5.000000)" fill="#333230">
+                    <path d="M16.6419999,4.65094993 C16.834775,4.45323195 17.1513321,4.4492249 17.3490501,4.64199993 C17.5363618,4.82462891 17.5498167,5.11835317 17.3868034,5.31687923 L17.3580001,5.34905007 L7.60800007,15.3490501 C7.42373437,15.5380405 7.12679924,15.5498053 6.92853992,15.3830067 L6.89644661,15.3535534 L2.64644661,11.1035534 C2.45118446,10.9082912 2.45118446,10.5917088 2.64644661,10.3964466 C2.8314318,10.2114614 3.12530284,10.2017254 3.3217497,10.3672384 L3.35355339,10.3964466 L7.24525,14.288 L16.6419999,4.65094993 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -9,6 +9,11 @@ import { MatCardModule, MatInputModule, MatButtonModule, MatIconModule, MatStepp
 import { WelcomeComponent } from './welcome.component';
 import { EffectsModule } from '@ngrx/effects';
 import { FybrbuttonsModule } from 'src/app/common/fybrbuttons/fybrbuttons.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { stepReducer } from '../state/steps.reducers';
+import { StepEffect } from '../state/steps.effects';
+import { HttpClientModule, HTTP_INTERCEPTORS,/*  */ } from '@angular/common/http';
+import { PassInterceptor } from 'src/app/pass.interceptor';
 
 const welcomeRoute: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -19,16 +24,27 @@ const welcomeRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(welcomeRoute),
+    StoreModule.forFeature('steps', stepReducer),
+    EffectsModule.forRoot([StepEffect]),
     FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
     FybrbuttonsModule,
-    MatStepperModule
-    // StoreModule.forFeature('login', loginReducer),
-    // EffectsModule.forRoot([LoginEffect]),
+    MatStepperModule,
+    HttpClientModule
   ],
-  exports: [ WelcomeComponent ]
+  exports: [ WelcomeComponent ],
+  providers: [ HttpClientModule,
+    // PassInterceptor,
+    // {
+    //     provide: HTTP_INTERCEPTORS,
+    //     useClass: PassInterceptor,
+    //     multi: true
+    //   }
+     ]
 })
 export class WelcomeModule { }
