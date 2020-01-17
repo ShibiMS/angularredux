@@ -16,42 +16,38 @@
     <div class="stepsContent" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center">        
         <mat-horizontal-stepper #stepper> 
             <mat-step>
-                <app-welcome [stepper]="stepper">                    
-                </app-welcome>                
+                <app-physique-goals></app-physique-goals>
+            </mat-step>
+            <mat-step>
+                <app-welcome [stepper]="stepper"></app-welcome>                
             </mat-step>
             <mat-step>            
                 <app-gender-selection [stepper]="stepper"></app-gender-selection>
             </mat-step>
             <mat-step>
-                <app-age-selection [stepper]="stepper">                    
-                </app-age-selection>
+                <app-age-selection [stepper]="stepper"></app-age-selection>
             </mat-step>
             <mat-step>
-                <app-height-selection>                    
-                </app-height-selection>
+                <app-height-selection [stepper]="stepper"></app-height-selection>
             </mat-step>
             <mat-step>
-                <app-weight-selection>                    
-                </app-weight-selection>
+                <app-weight-selection [stepper]="stepper"></app-weight-selection>
             </mat-step>
             <mat-step>
                 <app-basics-cover>                    
                 </app-basics-cover>
             </mat-step>
             <mat-step>
-                <app-progress-selection>                    
-                </app-progress-selection>
+                <app-progress-selection [stepper]="stepper"></app-progress-selection>
             </mat-step>
             <mat-step>
-                <app-photo-upload-section>                    
-                </app-photo-upload-section>
+                <app-photo-upload-section [stepper]="stepper"></app-photo-upload-section>
             </mat-step>
             <mat-step>
-                <app-body-measurement>                    
-                </app-body-measurement>
+                <app-body-measurement [stepper]="stepper"></app-body-measurement>
             </mat-step>
             <mat-step>
-                <app-weight-selection-extra></app-weight-selection-extra>
+                <app-weight-selection-extra [stepper]="stepper"></app-weight-selection-extra>
             </mat-step>
             <mat-step>
                 <app-physique-goals></app-physique-goals>
@@ -70,6 +66,9 @@
             </mat-step>
             <mat-step>
                 <app-activities></app-activities>
+            </mat-step>
+            <mat-step>
+                <app-yourfood></app-yourfood>
             </mat-step>
             <mat-step>
                 <app-dietrestriction></app-dietrestriction>

@@ -12,14 +12,12 @@ export class LoginUsers implements Action {
   constructor(public payload: any) {}
 }
 export class LoginUsersSuccess implements Action {
-    readonly type = LoginActionTypes.LOGIN_USERS_SUCCESS;
-  
+    readonly type = LoginActionTypes.LOGIN_USERS_SUCCESS;  
     constructor(public payload: any) {}
   }
   
   export class LoginUsersFail implements Action {
-    readonly type = LoginActionTypes.LOGIN_USERS_FAIL;
-  
+    readonly type = LoginActionTypes.LOGIN_USERS_FAIL;  
     constructor(public payload: any) {}
   }
 export type Action = 

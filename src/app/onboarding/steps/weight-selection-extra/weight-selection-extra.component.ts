@@ -1,4 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as stepActions from '../../steps/state/steps.actions';
 
 @Component({
   selector: 'app-weight-selection-extra',
@@ -7,10 +10,37 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class WeightSelectionExtraComponent implements OnInit {
-
-  constructor() { }
+  @Input()stepper: any;
+  weightSelectionForm: FormGroup;
+  bodyType : any;
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store<any>
+  ) { }
 
   ngOnInit() {
+  this.weightSelectionForm = this.formBuilder.group({
+      weightChoose: ['', Validators.required]
+    });
+  }
+
+  weightselectionSubmit() {
+
+    if (this.weightSelectionForm.value.weightChoose === 1) {
+      this.bodyType = 'Entomorph';
+    } else if (this.weightSelectionForm.value.weightChoose === 2) {
+      this.bodyType = 'Mesomorph';
+    } else {
+      this.bodyType = 'Ectomorph';
+    }
+
+    const weightSelection = {
+        bodyTypeId : this.weightSelectionForm.value.weightChoose,
+        bodyType : this.bodyType
+      };
+
+    this.store.dispatch(new stepActions.WeightExtra(weightSelection));
+    this.stepper.next();
   }
 
 }

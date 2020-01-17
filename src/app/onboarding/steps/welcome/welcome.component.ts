@@ -29,13 +29,11 @@ export class WelcomeComponent implements OnInit {
 
   welcomeSubmit() {
     const welcomestep: any = {
-      userId: '',
-      accessToken: '',
       firstName: this.welcomeForm.value.firstName
     };
-    console.log('123', this.welcomeForm.value);
-    // this.store.dispatch(new stepActions.WelcomeStep(welcomestep));
-    this.welcomestepService.step1WelcomeSubmit(welcomestep);
+    console.log('Welcome dispatch', this.welcomeForm.value);
+    this.store.dispatch(new stepActions.WelcomeStep(welcomestep));
+   // this.welcomestepService.step1WelcomeSubmit(welcomestep);
     this.stepper.next();
 
   }

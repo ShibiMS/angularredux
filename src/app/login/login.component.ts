@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.value.password,
         userType: 1
       };
-      console.log(userlogin,'userlogin');
+      console.log(userlogin, 'userlogin');
       this.store.dispatch(new loginActions.LoginUsers(userlogin));
      // this.loginForm.reset();
     } else {

@@ -12,11 +12,18 @@ import {
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GenderSelectionComponent } from './gender-selection.component';
+import { RouterModule } from '@angular/router';
+import { stepReducer } from '../state/steps.reducers';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StepEffect } from '../state/steps.effects';
 
 @NgModule({
   declarations: [GenderSelectionComponent],
   imports: [
     CommonModule,
+    StoreModule.forFeature('stepreducer', stepReducer),
+    EffectsModule.forRoot([StepEffect]),
     MatFormFieldModule,
     MatStepperModule,
     ReactiveFormsModule,

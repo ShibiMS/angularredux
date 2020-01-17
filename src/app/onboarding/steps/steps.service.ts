@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class StepsService {
   private apibaseUrl = 'https://apidev.fybr.app/api';
+  private imageurl  = 'https://fybrs3dev.s3.amazonaws.com';
   constructor(
     private http: HttpClient
   ) { }
@@ -28,13 +29,15 @@ export class StepsService {
       firstName : payload.firstName,
       accessToken: this.accessToken
     };
+    // return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step1`,
+    //  postData, this.httpOptions).subscribe(res => {
+    //   console.log('res', res);
+    // });
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step1`,
-     postData, this.httpOptions).subscribe(res => {
-      console.log('res', res);
-    });
+     postData, this.httpOptions);
   }
 
-  step1GenderSubmit(payload: any){
+  step2GenderSubmit(payload: any){
     console.log('call in service2', payload);
     this.httpOptions = {
       headers: this.headersobject
@@ -44,13 +47,15 @@ export class StepsService {
       gender : payload.gender,
       accessToken: this.accessToken
     };
+    // return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step2`,
+    //  postData, this.httpOptions).subscribe(res => {
+    //   console.log('res', res);
+    // });
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step2`,
-     postData, this.httpOptions).subscribe(res => {
-      console.log('res', res);
-    });
+     postData, this.httpOptions);
   }
 
-  step1AgeSubmit(payload: any){
+  step3AgeSubmit(payload: any){
     console.log('call in service2', payload);
     this.httpOptions = {
       headers: this.headersobject
@@ -60,10 +65,149 @@ export class StepsService {
       yearOfBirth : payload.yearOfBirth,
       accessToken: this.accessToken
     };
+    // return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step3`,
+    //  postData, this.httpOptions).subscribe(res => {
+    //   console.log('res', res);
+    // });
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step3`,
-     postData, this.httpOptions).subscribe(res => {
-      console.log('res', res);
-    });
+     postData, this.httpOptions);
   }
+  step4heightSubmit(payload: any) {
+    console.log('step4 height service', payload);
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    const postData = {
+      userId : this.userId,
+      height: {
+        height: payload.height,
+        heightMeasure: 'cm'
+      },
+      accessToken: this.accessToken
+    };
+    // return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step4`,
+    //  postData, this.httpOptions).subscribe(res => {
+    //   console.log('res', res);
+    // });
+    return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step4`,
+     postData, this.httpOptions);
+  }
+  step5weightSubmit(payload: any) {
+    console.log('step5 service', payload);
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    const postData = {
+      userId : this.userId,
+      weight: {
+        weight: payload.weight,
+        weightMeasure: 'cm'
+      },
+      accessToken: this.accessToken
+    };
+    // return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step5`,
+    //  postData, this.httpOptions).subscribe(res => {
+    //   console.log('res', res);
+    // });
+    return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step5`,
+     postData, this.httpOptions);
+  }
+
+  step7ProgressSubmit(payload: any) {
+    console.log('step7 service', payload);
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    const postData = {
+      userId : this.userId,
+      bodyMeasurementBy : payload.bodyMeasurementBy,
+      accessToken: this.accessToken
+    };
+    return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step7`,
+     postData, this.httpOptions);
+  }
+
+//  ProfilePhotoUpload(payload: any) {
+//   console.log('ProfilePhotoUpload', payload);
+//   this.httpOptions = {
+//     headers: this.headersobject
+//   };
+//   const formData: FormData = new FormData();
+//   formData.append('file', payload, payload.name);
+//   formData.append('bucketName', 'fybrs3dev');
+//   return this.http.post<any>(this.apibaseUrl + `/s3/uploadFile`,
+//   formData).subscribe(res => {
+//         console.log('resupload', res);
+//         const postData = {
+//           userId : this.userId,
+//           accessToken: this.accessToken,
+//           type: 'media',
+//           image: {
+//             path: this.imageurl + '/' + res.fileKey,
+//             pathType: 'image/video'
+//           }
+//         };
+//         this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step8`,
+//         postData, this.httpOptions).subscribe( res1 => {
+//           console.log('save db', res1);
+//         });
+//       });
+//  }
+
+ProfilePhotoUpload(payload: any) {
+  console.log('ProfilePhotoUpload', payload);
+  const formData: FormData = new FormData();
+  formData.append('file', payload, payload.name);
+  formData.append('bucketName', 'fybrs3dev');
+  return this.http.post<any>(this.apibaseUrl + `/s3/uploadFile`, formData);
+ }
+ ProfilePhotoSaveDB(payload: any) {
+  console.log('ProfilePhotoSaveDB', payload);
+  this.httpOptions = {
+      headers: this.headersobject
+    };
+  const postData = {
+    userId : this.userId,
+    accessToken: this.accessToken,
+    type: 'media',
+    image: {
+      path: this.imageurl + '/' + payload.fileKey,
+      pathType: 'image/video'
+    }
+  };
+  return  this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step8`,
+        postData, this.httpOptions);
+ }
+
+ step9_BodyMeasureSubmit(payload: any) {
+  console.log('step9 service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId      : this.userId,
+    accessToken : this.accessToken,
+    type        : payload.type,
+    measure     : payload.measure
+  };
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step9`,
+   postData, this.httpOptions);
+}
+
+step10_WeightExtraSubmit(payload: any) {
+  console.log('step10 service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId      : this.userId,
+    accessToken : this.accessToken,
+    bodyTypeId  : payload.bodyTypeId,
+    bodyType    : payload.bodyType
+  };
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step10`,
+   postData, this.httpOptions);
+}
+
 }
 

@@ -5,7 +5,8 @@
     <mat-card class="steps-card" fxFlex="35" fxLayout="row wrap" fxLayoutAlign="center">        
       <mat-card-title fxFlex="100" >Record your measurements</mat-card-title> 
       <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-        <span>In</span><mat-slide-toggle></mat-slide-toggle><span>cm</span>
+        <span>In</span>
+        <mat-slide-toggle (change) = "onChangeMeasurement($event)"></mat-slide-toggle><span>cm</span>
       </div>      
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
             <form [formGroup]="bodymeasureForm">
@@ -35,7 +36,7 @@
                         </mat-form-field>
                     </div>              
                     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-                        <button mat-button matStepperNext>NEXT</button>      
+                        <button mat-button (click)="bodyMeasureSubmit()">NEXT</button>      
                       </div>
                 </div>
             </form>

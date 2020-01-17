@@ -2,10 +2,11 @@
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Weight
       <span class="stepTitlerequired">*required</span>
     </h3>
+    <form [formGroup]="weightSelectionForm" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center">        
       <mat-card-title>How easily do you put on <br/>weight? Let's use donuts<br/> for reference.</mat-card-title>       
          
-      <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+      <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" formControlName="weightChoose">
       <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="2%" fxLayoutAlign="center">
       <label fxFlex="50" fxLayout="row wrap">
         <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
@@ -59,8 +60,9 @@
     <!-- <app-fybrbuttons mat-button matStepperNext [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
     </app-fybrbuttons>  -->
     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-      <button mat-button matStepperNext>NEXT</button>
+      <button mat-button (click)="weightselectionSubmit()">NEXT</button>
     </div>
     </mat-card>
+    </form>
 </div>
   

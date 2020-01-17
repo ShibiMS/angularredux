@@ -5,7 +5,8 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 const initialState = {
     stepuser: [
                 {
-                  loggedInData: ''
+                  loggedInData: '',
+                  welcome: 'welcome'
                 }
               ]
 };
@@ -24,6 +25,40 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
         return {
             ...state,
             errorMessage: 'Invalid Credentials'
+        };
+    }
+    case stepActions.StepActionTypes.STEP2_GENDER_SELECTION_SUCCESS: {
+        console.log('GENDER SELECTION SUCCESS', action.payload);
+        return {
+            ...state,
+            loggedInData: action.payload,
+            errorMessage: null
+        };
+
+    }
+    case stepActions.StepActionTypes.STEP2_GENDER_SELECTION_FAIL: {
+        console.log('GENDER SELECTION FAILURE', action.payload);
+        return {
+            ...state,
+            loggedInData: action.payload,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP8_Profile_Upload_SUCCESS: {
+        console.log('Profile Upload Success', action.payload);
+        return {
+            ...state,
+            loggedInData: action.payload,
+            errorMessage: null
+        };
+
+    }
+    case stepActions.StepActionTypes.STEP8_Profile_Upload_FAIL: {
+        console.log('Profile Upload Failure', action.payload);
+        return {
+            ...state,
+            loggedInData: action.payload,
+            errorMessage: null
         };
     }
     default: {

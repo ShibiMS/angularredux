@@ -35,7 +35,7 @@ const loginRoute: Routes = [
     FybrbuttonsModule,
     FormsModule,
     ReactiveFormsModule,
-    StepsModule
+    //StepsModule
   ],
   providers: [ HttpClientModule ]
 })

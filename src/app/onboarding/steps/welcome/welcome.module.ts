@@ -12,7 +12,7 @@ import { FybrbuttonsModule } from 'src/app/common/fybrbuttons/fybrbuttons.module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { stepReducer } from '../state/steps.reducers';
 import { StepEffect } from '../state/steps.effects';
-import { HttpClientModule, HTTP_INTERCEPTORS,/*  */ } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PassInterceptor } from 'src/app/pass.interceptor';
 
 const welcomeRoute: Routes = [
@@ -24,7 +24,7 @@ const welcomeRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(welcomeRoute),
-    StoreModule.forFeature('steps', stepReducer),
+    StoreModule.forFeature('stepreducer', stepReducer),
     EffectsModule.forRoot([StepEffect]),
     FlexLayoutModule,
     FormsModule,
@@ -38,13 +38,6 @@ const welcomeRoute: Routes = [
     HttpClientModule
   ],
   exports: [ WelcomeComponent ],
-  providers: [ HttpClientModule,
-    // PassInterceptor,
-    // {
-    //     provide: HTTP_INTERCEPTORS,
-    //     useClass: PassInterceptor,
-    //     multi: true
-    //   }
-     ]
+  providers: [ HttpClientModule]
 })
 export class WelcomeModule { }

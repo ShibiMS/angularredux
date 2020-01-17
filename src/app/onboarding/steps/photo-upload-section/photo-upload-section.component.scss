@@ -8,6 +8,9 @@
         .mat-card{
             p{
                 margin:10px;
+                span{
+                    cursor: pointer;
+                }
             }
         }
         .mat-form-field {
@@ -26,10 +29,20 @@
       }  
       p{
         margin:10px;
+        span{
+            cursor: pointer;
+        }
     }  
     .photoupload{
         img{
             width:50%
+        }
+    }
+    .helptext2{
+        position: relative;
+        .mat-icon{
+            position: absolute;
+            left:45px;
         }
     }
     }

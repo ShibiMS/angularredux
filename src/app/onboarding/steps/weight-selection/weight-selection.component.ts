@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StepsService } from '../steps.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as stepActions from '../../steps/state/steps.actions';
 
 @Component({
   selector: 'app-weight-selection',
@@ -6,15 +10,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weight-selection.component.scss']
 })
 export class WeightSelectionComponent implements OnInit {
+  @Input()stepper: any;
   selectedValue: string;
   weights: any = [
     { weight: '5.5' },
     { weight: '6.2' },
     { weight: '5.4' }
   ];
-  constructor() { }
+  weightForm: any;
+  constructor(
+    private store: Store<any>,
+    private weightstepstepService: StepsService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.weightForm = this.formBuilder.group({
+      weightoptions: ['', Validators.required]});
   }
 
+  weightSubmit(){
+    const wtstep: any = {
+      weight: this.weightForm.value.weightoptions
+    };
+    console.log('weight dispatch', this.weightForm.value);
+    this.store.dispatch(new stepActions.WeightSelection(wtstep));
+   // this.weightstepstepService.step5weightSubmit(wtstep);
+    this.stepper.next();
+  }
 }
