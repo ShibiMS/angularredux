@@ -24,7 +24,9 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
     this.welcomeForm = this.formBuilder.group({
-      firstName: ['', Validators.required]});
+      firstName: ['', Validators.required]
+    });
+    this.store.dispatch(new stepActions.WelcomeStep());
   }
 
   welcomeSubmit() {

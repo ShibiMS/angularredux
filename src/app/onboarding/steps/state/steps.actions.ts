@@ -6,6 +6,14 @@ export enum StepActionTypes {
   STEP1_WELCOME_SUCCESS = "STEP1_WELCOME_SUCCESS",
   STEP1_WELCOME_FAIL    = "STEP1_WELCOME_FAIL",
   
+  /***Get Welcome***/
+
+  STEP1_GETWELCOME         = "STEP1 GET WELCOME", 
+  STEP1_GETWELCOME_SUCCESS = "STEP1 GET WELCOME SUCCESS",
+  STEP1_GETWELCOME_FAIL    = "STEP1 GET WELCOME FAIL",
+
+  /***Get Welcome***/
+
   /*****Step 2******/
   
   STEP2_GENDER_SELECTION            = "GENDER SELECTION",
@@ -50,10 +58,40 @@ export enum StepActionTypes {
 
   /*****Step 10******/
   
-  STEP10_WeightExtra           = "Weight Extra Selection",
-  STEP10_WeightExtra_SUCCESS   = "Weight Extra Success",
-  STEP10_WeightExtra_FAIL      = "Weight Extra Fail",
+  STEP10_WeightExtra          = "Weight Extra Selection",
+  STEP10_WeightExtra_SUCCESS  = "Weight Extra Success",
+  STEP10_WeightExtra_FAIL     = "Weight Extra Fail",
 
+  /*****Step 11******/
+  
+  STEP11_PhysiqueGoal         = "Physique Goal Selection",
+  STEP11_PhysiqueGoal_SUCCESS = "Physique Goal Success",
+  STEP11_PhysiqueGoal_FAIL    = "Physique Goal Fail",
+
+
+  /*****Step 12******/
+  
+  STEP12_ActivityLevel          = "Activity Level",
+  STEP12_ActivityLevel_SUCCESS  = "Activity Level Success",
+  STEP12_ActivityLevel_FAIL     = "Activity Level Fail",
+
+  /*****Step 13******/
+  
+  STEP13_WorkOuts          = "WorkOuts",
+  STEP13_WorkOuts_SUCCESS  = "WorkOuts Success",
+  STEP13_WorkOuts_FAIL     = "WorkOuts Fail",
+
+  /*****Step 14******/
+  
+  STEP14_FitnessGoal          = "FitnessGoal",
+  STEP14_FitnessGoal_SUCCESS  = "FitnessGoal Success",
+  STEP14_FitnessGoal_FAIL     = "FitnessGoal Fail",
+
+  /*****Step 15******/
+  
+  STEP15_ToolKit          = "ToolKit",
+  STEP15_ToolKit_SUCCESS  = "ToolKit Success",
+  STEP15_ToolKit_FAIL     = "ToolKit Fail",
  }
 export class WelcomeStep implements Action {  
   readonly type = StepActionTypes.STEP1_WELCOME;
@@ -68,6 +106,23 @@ export class WelcomeStepFail implements Action {
     readonly type = StepActionTypes.STEP1_WELCOME_FAIL;  
     constructor(public payload: any) {}
 }
+
+/***GET Data***/
+export class GET_WelcomeStep implements Action {  
+  readonly type = StepActionTypes.STEP1_WELCOME;
+  constructor(public payload: any) {}  
+}
+export class GET_WelcomeStepSuccess implements Action {
+    readonly type = StepActionTypes.STEP1_WELCOME_SUCCESS;  
+    constructor(public payload: any) {}
+}
+  
+export class GET_WelcomeStepFail implements Action {
+    readonly type = StepActionTypes.STEP1_WELCOME_FAIL;  
+    constructor(public payload: any) {}
+}
+/***GET Data***/
+
 
 /***** STEP 2 *****/
 export class GenderSelection implements Action {
@@ -194,10 +249,89 @@ export class WeightExtraFail implements Action {
   constructor(public payload: any) {}
 }
 
+/*** STEP 11****/ 
+
+export class PhysiqueGoal implements Action {
+  readonly type = StepActionTypes.STEP11_PhysiqueGoal;  
+  constructor(public payload: any) {}
+}
+export class PhysiqueGoalSuccess implements Action {
+  readonly type = StepActionTypes.STEP11_PhysiqueGoal_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class PhysiqueGoalFail implements Action {
+  readonly type = StepActionTypes.STEP11_PhysiqueGoal_FAIL;
+  constructor(public payload: any) {}
+}
+
+/*** STEP 12****/ 
+
+export class ActivityLevel implements Action {
+  readonly type = StepActionTypes.STEP12_ActivityLevel;  
+  constructor(public payload: any) {}
+}
+export class ActivityLevelSuccess implements Action {
+  readonly type = StepActionTypes.STEP12_ActivityLevel_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class ActivityLevelFail implements Action {
+  readonly type = StepActionTypes.STEP12_ActivityLevel_FAIL;
+  constructor(public payload: any) {}
+}
+
+/*** STEP 13****/ 
+
+export class WorkOutLevel implements Action {
+  readonly type = StepActionTypes.STEP13_WorkOuts;  
+  constructor(public payload: any) {}
+}
+export class WorkOutLevelSuccess implements Action {
+  readonly type = StepActionTypes.STEP13_WorkOuts_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class WorkOutLevelFail implements Action {
+  readonly type = StepActionTypes.STEP13_WorkOuts_FAIL;
+  constructor(public payload: any) {}
+}
+
+
+/*** STEP 14****/ 
+
+export class FitnessGoal implements Action {
+  readonly type = StepActionTypes.STEP14_FitnessGoal;  
+  constructor(public payload: any) {}
+}
+export class FitnessGoalSuccess implements Action {
+  readonly type = StepActionTypes.STEP14_FitnessGoal_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class FitnessGoalFail implements Action {
+  readonly type = StepActionTypes.STEP14_FitnessGoal_FAIL;
+  constructor(public payload: any) {}
+}
+
+/*** STEP 15****/ 
+
+export class ToolKit implements Action {
+  readonly type = StepActionTypes.STEP15_ToolKit;  
+  constructor(public payload: any) {}
+}
+export class ToolKitSuccess implements Action {
+  readonly type = StepActionTypes.STEP15_ToolKit_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class ToolKitFail implements Action {
+  readonly type = StepActionTypes.STEP15_ToolKit_FAIL;
+  constructor(public payload: any) {}
+}
+
 export type Action = 
 | WelcomeStep
 | WelcomeStepSuccess
 | WelcomeStepFail
+| GET_WelcomeStep
+| GET_WelcomeStepSuccess
+| GET_WelcomeStepFail
 | GenderSelection
 | GenderSelectionSuccess
 | GenderSelectionFail
@@ -222,6 +356,21 @@ export type Action =
 | WeightExtra
 | WeightExtraSuccess
 | WeightExtraFail
+| PhysiqueGoal
+| PhysiqueGoalSuccess
+| PhysiqueGoalFail
+| ActivityLevel
+| ActivityLevelSuccess
+| ActivityLevelFail
+| WorkOutLevel
+| WorkOutLevelSuccess
+| WorkOutLevelFail
+| FitnessGoal
+| FitnessGoalSuccess
+| FitnessGoalFail
+| ToolKit
+| ToolKitSuccess
+| ToolKitFail
 ;
   
  

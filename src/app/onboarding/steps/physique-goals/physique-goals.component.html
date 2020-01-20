@@ -2,14 +2,15 @@
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">PHYSIQUE GOALS
         <span class="stepTitlerequired">*required</span>
     </h3>
+    <form [formGroup]="physiqueForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center">
         <mat-card-title>In terms of your physique, <br />what's your goal?<br /> reference.</mat-card-title>
 
-        <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+        <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" formControlName="physiquechoice">
             <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="2%" fxLayoutAlign="center">                
                 <label fxFlex="20" fxLayout="row wrap">
                     <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-                          <mat-radio-button #pgreference1 value="1"></mat-radio-button>
+                          <mat-radio-button #pgreference1 value="5"></mat-radio-button>
                           <span *ngIf="pgreference1.checked else pgreference1notchecked">
                               <img src="../../../../assets/burn fat-selected.svg">
                           </span>
@@ -23,7 +24,7 @@
                   </label>
                   <label fxFlex="20" fxLayout="row wrap">
                     <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-                          <mat-radio-button #pgreference2 value="2"></mat-radio-button>
+                          <mat-radio-button #pgreference2 value="6"></mat-radio-button>
                           <span *ngIf="pgreference2.checked else pgreference2notchecked">
                               <img src="../../../../assets/stay perfect-selected.svg">
                           </span>
@@ -37,7 +38,7 @@
                   </label>
                   <label fxFlex="20" fxLayout="row wrap">
                     <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-                          <mat-radio-button #pgreference3 value="3"></mat-radio-button>
+                          <mat-radio-button #pgreference3 value="7"></mat-radio-button>
                           <span *ngIf="pgreference3.checked else pgreference3notchecked">
                               <img src="../../../../assets/tone up-selected.svg">
                           </span>
@@ -51,7 +52,7 @@
                   </label>
                   <label fxFlex="20" fxLayout="row wrap">
                     <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-                          <mat-radio-button #pgreference4 value="4"></mat-radio-button>
+                          <mat-radio-button #pgreference4 value="8"></mat-radio-button>
                           <span *ngIf="pgreference4.checked else pgreference4notchecked">
                               <img src="../../../../assets/strength-selected.svg">
                           </span>
@@ -71,7 +72,8 @@
         <!-- <app-fybrbuttons mat-button matStepperNext [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
     </app-fybrbuttons>  -->
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext>NEXT</button>
+            <button mat-button (click)="physiqueGoalSubmit()">NEXT</button>
         </div>
     </mat-card>
+    </form>
 </div>

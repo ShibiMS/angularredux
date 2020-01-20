@@ -2,17 +2,19 @@
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">workouts
         <span class="stepTitlerequired">Skip</span>
     </h3>
+    <form [formGroup]="workOutForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">
         <mat-card-title>Goals should be realistic but <br/>ambitious...<br/><br/>"realtious" if you will.</mat-card-title>
         <mat-card-subtitle><p>With that in mind, how many workouts can you fit into a week?</p></mat-card-subtitle>
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" class="slidercustom">
-            <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+            <ng5-slider [(value)]="value" [options]="options" formControlName="workoutlevel"></ng5-slider>
         </div>
         <p class="helptext">
             <mat-icon>help_outline</mat-icon>Why is the minimum 3?
         </p>
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext>NEXT</button>
+            <button mat-button (click)="workOutSubmit()">NEXT</button>
         </div>
     </mat-card>
+    </form>
 </div>

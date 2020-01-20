@@ -1,17 +1,19 @@
 <div id="activitystep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">ACTIVITIES
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">ACTIVITY LEVEL
         <span class="stepTitlerequired">skip</span>
     </h3>
+    <form fxFlex="100" [formGroup]="activityLevelform" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">
         <mat-card-title>Not including workouts, how<br/>much do you move your<br/> body?</mat-card-title>
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" class="slidercustom">
-            <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+            <ng5-slider [(value)]="value" [options]="options" formControlName="sliderValue"></ng5-slider>
         </div>
         <p class="helptext">
             <mat-icon>help_outline</mat-icon>Why we ask this?
         </p>
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext>NEXT</button>
+            <button mat-button (click)="activityFormSubmit()">NEXT</button>
         </div>
     </mat-card>
+  </form>
 </div>

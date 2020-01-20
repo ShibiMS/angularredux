@@ -12,7 +12,7 @@ import * as stepActions from '../../steps/state/steps.actions';
 export class WeightSelectionExtraComponent implements OnInit {
   @Input()stepper: any;
   weightSelectionForm: FormGroup;
-  bodyType : any;
+  bodyType: any;
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<any>

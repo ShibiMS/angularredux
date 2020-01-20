@@ -29,7 +29,7 @@ export class StepEffect {
         console.log(err);
         return of(new stepActions.WelcomeStepFail(err))})
       )
-    )    
+    )
   );
 
   @Effect({ dispatch: false })
@@ -43,6 +43,43 @@ export class StepEffect {
       ofType<stepActions.WelcomeStepFail>(stepActions.StepActionTypes.STEP1_WELCOME_FAIL)
   );
 
+
+  // ****Get welcome data****/
+
+  // @Effect({ dispatch: false })
+  // GetwelcomeStep$ = this.actions$.pipe(ofType<stepActions.GET_WelcomeStep>(
+  //   stepActions.StepActionTypes.STEP1_GETWELCOME),
+  //   map((action: stepActions.GET_WelcomeStep) => {
+  //    console.log('Get Welcome action', action.payload);
+  //    return action.payload;
+  //   }),
+  //   switchMap((welcomeuser: any) =>
+  //     this.stepService.step1WelcomeSubmit(welcomeuser).pipe(
+  //       map(
+  //         (welcomeuserdata: any) => {
+  //           console.log('welcomeuserdata', welcomeuserdata);
+  //           return new stepActions.WelcomeStepSuccess(welcomeuserdata);
+  //         }
+  //     ),
+  //     catchError(err => {
+  //       console.log(err);
+  //       return of(new stepActions.WelcomeStepFail(err)); })
+  //     )
+  //   )
+  // );
+
+  // @Effect({ dispatch: false })
+  // GetwelcomeStepSuccess$: Observable<Action> = this.actions$.pipe(
+  //     ofType<stepActions.WelcomeStepSuccess>(stepActions.StepActionTypes.STEP1_WELCOME_SUCCESS),
+  //     tap((user: any) => {})
+  // );
+
+  // @Effect({ dispatch: false })
+  // GetwelcomeStepFailure$: Observable<Action> = this.actions$.pipe(
+  //     ofType<stepActions.WelcomeStepFail>(stepActions.StepActionTypes.STEP1_WELCOME_FAIL)
+  // );
+
+  // ***Get***/
 
   @Effect({ dispatch: false })
   genderStep$ = this.actions$.pipe(ofType<stepActions.GenderSelection>(
@@ -345,6 +382,188 @@ WeightExtraSuccess$: Observable<Action> = this.actions$.pipe(
 @Effect({ dispatch: false })
 WeightExtraFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.WeightExtraFail>(stepActions.StepActionTypes.STEP10_WeightExtra_FAIL)
+);
+
+/****STEP 11*****/
+
+@Effect({ dispatch: false })
+physiquegoalStep$ = this.actions$.pipe(ofType<stepActions.PhysiqueGoal>(
+  stepActions.StepActionTypes.STEP11_PhysiqueGoal),
+  map((action: stepActions.PhysiqueGoal) => {
+   console.log('Physique action', action.payload);
+   return action.payload;
+  }),
+  switchMap((PhysiqueGoal: any) =>
+    this.stepService.step11_PhysiqueGoalSubmit(PhysiqueGoal).pipe(
+      map(
+        (PhysiqueGoalData: any) => {
+          console.log('Physique Data', PhysiqueGoalData);
+          return new stepActions.PhysiqueGoalSuccess(PhysiqueGoalData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.PhysiqueGoalFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+physiquegoalSuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.PhysiqueGoalSuccess>(stepActions.StepActionTypes.STEP11_PhysiqueGoal_SUCCESS),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+physiquegoalFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.PhysiqueGoalFail>(stepActions.StepActionTypes.STEP11_PhysiqueGoal_FAIL)
+);
+
+/****STEP 12*****/
+
+@Effect({ dispatch: false })
+activityLevelStep$ = this.actions$.pipe(ofType<stepActions.ActivityLevel>(
+  stepActions.StepActionTypes.STEP12_ActivityLevel),
+  map((action: stepActions.ActivityLevel) => {
+   console.log('Activity Level action', action.payload);
+   return action.payload;
+  }),
+  switchMap((ActivityLevel: any) =>
+    this.stepService.step12_ActivityLevelSubmit(ActivityLevel).pipe(
+      map(
+        (ActivityLevelData: any) => {
+          console.log('Activity Level Data', ActivityLevelData);
+          return new stepActions.ActivityLevelSuccess(ActivityLevelData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.ActivityLevelFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+activityLevelSuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.ActivityLevelSuccess>(stepActions.StepActionTypes.STEP12_ActivityLevel_SUCCESS),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+activityLevelFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.ActivityLevelFail>(stepActions.StepActionTypes.STEP12_ActivityLevel_FAIL)
+);
+
+
+/****STEP 13*****/
+
+@Effect({ dispatch: false })
+workoutLevelStep$ = this.actions$.pipe(ofType<stepActions.WorkOutLevel>(
+  stepActions.StepActionTypes.STEP13_WorkOuts),
+  map((action: stepActions.WorkOutLevel) => {
+   console.log('Workout Level action', action.payload);
+   return action.payload;
+  }),
+  switchMap((WorkOutLevel: any) =>
+    this.stepService.step13_WorkOutLevel(WorkOutLevel).pipe(
+      map(
+        (WorkOutLevelData: any) => {
+          console.log('WorkOutLevelData', WorkOutLevelData);
+          return new stepActions.WorkOutLevelSuccess(WorkOutLevelData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.WorkOutLevelFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+workoutLevelSuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.WorkOutLevelSuccess>(stepActions.StepActionTypes.STEP13_WorkOuts_SUCCESS),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+workoutLevelFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.WorkOutLevelFail>(stepActions.StepActionTypes.STEP13_WorkOuts_FAIL)
+);
+
+/****STEP 14*****/
+
+@Effect({ dispatch: false })
+fitnessGoalStep$ = this.actions$.pipe(ofType<stepActions.FitnessGoal>(
+  stepActions.StepActionTypes.STEP14_FitnessGoal),
+  map((action: stepActions.FitnessGoal) => {
+   console.log('Fitness Goal action', action.payload);
+   return action.payload;
+  }),
+  switchMap((FitnessGoalLevel: any) =>
+    this.stepService.step14_FitnessGoalLevel(FitnessGoalLevel).pipe(
+      map(
+        (FitnessGoalLevelData: any) => {
+          console.log('FitnessGoalLevelData', FitnessGoalLevelData);
+          return new stepActions.FitnessGoalSuccess(FitnessGoalLevelData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.FitnessGoalFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+fitnessGoalSuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.FitnessGoalSuccess>(stepActions.StepActionTypes.STEP14_FitnessGoal_SUCCESS),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+fitnessGoalFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.FitnessGoalFail>(stepActions.StepActionTypes.STEP14_FitnessGoal_FAIL)
+);
+
+
+/****STEP 15*****/
+
+@Effect({ dispatch: false })
+toolKitStep$ = this.actions$.pipe(ofType<stepActions.ToolKit>(
+  stepActions.StepActionTypes.STEP15_ToolKit),
+  map((action: stepActions.ToolKit) => {
+   console.log('Fitness Goal action', action.payload);
+   return action.payload;
+  }),
+  switchMap((toolkit: any) =>
+    this.stepService.step15_ToolKitSubmit(toolkit).pipe(
+      map(
+        (toolkitData: any) => {
+          console.log('toolkitLevelData', toolkitData);
+          return new stepActions.ToolKitSuccess(toolkitData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.ToolKitFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+toolKitSuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.ToolKitSuccess>(stepActions.StepActionTypes.STEP15_ToolKit_SUCCESS),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+toolKitFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.ToolKitFail>(stepActions.StepActionTypes.STEP15_ToolKit_FAIL)
 );
 
   constructor(

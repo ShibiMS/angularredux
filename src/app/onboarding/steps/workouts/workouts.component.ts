@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Options } from 'ng5-slider';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as stepActions from '../../steps/state/steps.actions';
 
 @Component({
   selector: 'app-workouts',
@@ -8,6 +11,8 @@ import { Options } from 'ng5-slider';
   encapsulation: ViewEncapsulation.None
 })
 export class WorkoutsComponent implements OnInit {
+  @Input() stepper: any;
+  workOutForm: FormGroup
   value: number = 4;
   options: Options = {
     showTicksValues: true,
@@ -19,9 +24,24 @@ export class WorkoutsComponent implements OnInit {
       {value: 7, legend: '7'},
     ]
   };
-  constructor() { }
+  constructor(
+    private formbuilder: FormBuilder,
+    private store: Store<any>
+  ) { }
 
   ngOnInit() {
+    this.workOutForm = this.formbuilder.group({
+      workoutlevel: [3]
+    });
+  }
+
+  workOutSubmit() {
+    console.log('workout value', this.workOutForm.value.workoutlevel);
+    const workoutstep = {
+      workoutPerWeek: this.workOutForm.value.workoutlevel
+    };
+    this.store.dispatch(new stepActions.WorkOutLevel(workoutstep));
+    this.stepper.next();
   }
 
 }

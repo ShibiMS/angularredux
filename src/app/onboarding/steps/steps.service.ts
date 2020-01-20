@@ -209,5 +209,76 @@ step10_WeightExtraSubmit(payload: any) {
    postData, this.httpOptions);
 }
 
+step11_PhysiqueGoalSubmit(payload: any) {
+  console.log('step11 service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId      : Number(this.userId),
+    accessToken : this.accessToken,
+    physicGoal  : Number(payload.physicGoal)
+  };
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step11`,
+   postData, this.httpOptions);
+}
+
+step12_ActivityLevelSubmit(payload: any) {
+  console.log('step12 service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId         : Number(this.userId),
+    accessToken    : this.accessToken,
+    activityLevel  : Number(payload.activityLevel)
+  };
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step12`,
+   postData, this.httpOptions);
+}
+
+step13_WorkOutLevel(payload: any) {
+  console.log('Workout service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId         : Number(this.userId),
+    accessToken     : this.accessToken,
+    workoutPerWeek  : payload.workoutPerWeek
+  };
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step13`,
+   postData, this.httpOptions);
+}
+
+step14_FitnessGoalLevel(payload: any) {
+  console.log('FitnessGoalLevel service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId       : Number(this.userId),
+    accessToken  : this.accessToken,
+    fitnessgoal  : payload.fitnessgoal
+  };
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step14`,
+   postData, this.httpOptions);
+}
+step15_ToolKitSubmit(payload: any){
+  console.log('ToolKitSubmit service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId       : Number(this.userId),
+    accessToken  : this.accessToken,
+    boutique     : payload.boutique,
+    commercial   : payload.commercial,
+    equipment    : payload.equipment
+  };
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step15`,
+   postData, this.httpOptions);
+}
+
 }
 

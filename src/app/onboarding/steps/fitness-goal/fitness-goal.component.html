@@ -2,10 +2,11 @@
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">FITNESS GOALS
         <span class="stepTitlerequired">Skip</span>
     </h3>
+    <form [formGroup]="fitnessGoalForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="25" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
         <mat-card-title>What are your fitness goals?</mat-card-title>
         <mat-card-subtitle>Pick any you'd like to work on.</mat-card-subtitle>
-        <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px">
+        <mat-radio-group aria-label="Select an option" fxFlex="100" fxLayout="column" fxLayoutGap="20px" formControlName="fitnessGoalValue">
             <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
             <mat-radio-button value="1" #fitnessgoal1></mat-radio-button>
                 <mat-card fxFlex="100" fxLayout="row wrap">
@@ -40,7 +41,8 @@
             <mat-icon>help_outline</mat-icon>What do these mean?
         </p>
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext>NEXT</button>
+            <button mat-button (click)="fitnessGoalSubmit()">NEXT</button>
         </div>
     </mat-card>
+</form>
 </div>

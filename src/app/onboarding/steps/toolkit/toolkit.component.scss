@@ -32,6 +32,20 @@
                     margin:0 15px 0 0;
                 }
             }
+            .mat-radio-checked{
+                opacity: 1 !important;
+                label{
+                    border:2px solid rgb(66, 134, 244); 
+                }
+            .mat-radio-outer-circle{
+                border: transparent;
+                background-color: transparent;
+            }
+            .mat-radio-inner-circle{
+                border: transparent;
+                background-color: transparent; 
+            }
+            }
           }
         .mat-form-field {
             width: 270px;
