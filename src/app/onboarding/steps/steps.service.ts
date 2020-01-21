@@ -12,7 +12,7 @@ export class StepsService {
     private http: HttpClient
   ) { }
     accessToken: any = localStorage.getItem('token');
-    userId: any = localStorage.getItem('userid');
+    userId: any = Number(localStorage.getItem('userid'));
     headersobject: any = new HttpHeaders({
       'Content-Type': 'application/json',
        Authorization: 'Bearer ' + this.accessToken,
@@ -37,7 +37,16 @@ export class StepsService {
      postData, this.httpOptions);
   }
 
-  step2GenderSubmit(payload: any){
+  GETstep1WelcomeSubmit(payload: any) {
+    console.log('call in service');
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step1?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  }
+
+  step2GenderSubmit(payload: any) {
     console.log('call in service2', payload);
     this.httpOptions = {
       headers: this.headersobject
@@ -47,15 +56,21 @@ export class StepsService {
       gender : payload.gender,
       accessToken: this.accessToken
     };
-    // return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step2`,
-    //  postData, this.httpOptions).subscribe(res => {
-    //   console.log('res', res);
-    // });
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step2`,
      postData, this.httpOptions);
   }
 
-  step3AgeSubmit(payload: any){
+  GetGenderSelection(payload: any) {
+    console.log('get gender in service');
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step2?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  }
+
+
+  step3AgeSubmit(payload: any) {
     console.log('call in service2', payload);
     this.httpOptions = {
       headers: this.headersobject
@@ -72,6 +87,18 @@ export class StepsService {
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step3`,
      postData, this.httpOptions);
   }
+
+  GetAgeSelection(payload: any) {
+    console.log('Get Age');
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step3?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  }
+
+
+
   step4heightSubmit(payload: any) {
     console.log('step4 height service', payload);
     this.httpOptions = {
@@ -81,7 +108,7 @@ export class StepsService {
       userId : this.userId,
       height: {
         height: payload.height,
-        heightMeasure: 'cm'
+        heightMeasure: payload.heightMeasure
       },
       accessToken: this.accessToken
     };
@@ -91,6 +118,15 @@ export class StepsService {
     // });
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step4`,
      postData, this.httpOptions);
+  }
+
+  GetHeightSelection(payload: any) {
+    console.log('Get Height');
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step4?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
   }
   step5weightSubmit(payload: any) {
     console.log('step5 service', payload);
@@ -112,7 +148,14 @@ export class StepsService {
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step5`,
      postData, this.httpOptions);
   }
-
+  GetWeightSelection(payload: any) {
+    console.log('Get Weight');
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step5?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  }
   step7ProgressSubmit(payload: any) {
     console.log('step7 service', payload);
     this.httpOptions = {

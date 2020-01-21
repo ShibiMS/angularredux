@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Store, State, select } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-gender-selection',
@@ -14,25 +15,36 @@ import * as stepActions from '../../steps/state/steps.actions';
 export class GenderSelectionComponent implements OnInit {
   @Input()stepper: any;
   genderForm: any;
+  userId = localStorage.getItem('userid');
   constructor(
     private genderstepService: StepsService,
-    private formBuilder:  FormBuilder,
+    private formBuilder: FormBuilder,
     private store: Store<any>
   ) { }
 
   ngOnInit() {
     this.genderForm = this.formBuilder.group({
       genderoptions: ['', Validators.required]});
+    this.store.dispatch(new stepActions.GET_GenderSelection(this.userId));
+    const gender  = this.store.select(stepsData.getFirstName);
+    console.log('gender', gender);
+    gender.subscribe(currentCustomer => {
+      if (currentCustomer) {
+        this.genderForm.patchValue({
+          genderoptions: currentCustomer.gender,
+        });
+      }
+    });
+
   }
-  
-  genderSubmit(){
+
+  genderSubmit() {
     const genderstep: any = {
       gender: this.genderForm.value.genderoptions
     };
     console.log('gender dispatch', this.genderForm.value);
     this.store.dispatch(new stepActions.GenderSelection(genderstep));
-    // this.genderstepService.step2GenderSubmit(genderstep);
-    this.stepper.next(); 
+    this.stepper.next();
   }
 
 }

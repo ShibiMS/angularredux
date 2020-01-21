@@ -27,7 +27,7 @@ export class StepEffect {
       ),
       catchError(err => {
         console.log(err);
-        return of(new stepActions.WelcomeStepFail(err))})
+        return of(new stepActions.WelcomeStepFail(err));})
       )
     )
   );
@@ -46,38 +46,21 @@ export class StepEffect {
 
   // ****Get welcome data****/
 
-  // @Effect({ dispatch: false })
-  // GetwelcomeStep$ = this.actions$.pipe(ofType<stepActions.GET_WelcomeStep>(
-  //   stepActions.StepActionTypes.STEP1_GETWELCOME),
-  //   map((action: stepActions.GET_WelcomeStep) => {
-  //    console.log('Get Welcome action', action.payload);
-  //    return action.payload;
-  //   }),
-  //   switchMap((welcomeuser: any) =>
-  //     this.stepService.step1WelcomeSubmit(welcomeuser).pipe(
-  //       map(
-  //         (welcomeuserdata: any) => {
-  //           console.log('welcomeuserdata', welcomeuserdata);
-  //           return new stepActions.WelcomeStepSuccess(welcomeuserdata);
-  //         }
-  //     ),
-  //     catchError(err => {
-  //       console.log(err);
-  //       return of(new stepActions.WelcomeStepFail(err)); })
-  //     )
-  //   )
-  // );
-
-  // @Effect({ dispatch: false })
-  // GetwelcomeStepSuccess$: Observable<Action> = this.actions$.pipe(
-  //     ofType<stepActions.WelcomeStepSuccess>(stepActions.StepActionTypes.STEP1_WELCOME_SUCCESS),
-  //     tap((user: any) => {})
-  // );
-
-  // @Effect({ dispatch: false })
-  // GetwelcomeStepFailure$: Observable<Action> = this.actions$.pipe(
-  //     ofType<stepActions.WelcomeStepFail>(stepActions.StepActionTypes.STEP1_WELCOME_FAIL)
-  // );
+  @Effect()
+  getWelcomeData$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GET_WelcomeStep>(
+      stepActions.StepActionTypes.STEP1_GETWELCOME
+    ),
+    mergeMap((action: stepActions.GET_WelcomeStep) =>
+      this.stepService.GETstep1WelcomeSubmit(action).pipe(
+        map(
+          (user: any) =>
+            new stepActions.GET_WelcomeStepSuccess(user)
+        ),
+        catchError(err => of(new stepActions.GET_WelcomeStepFail(err)))
+      )
+    )
+  );
 
   // ***Get***/
 
@@ -98,10 +81,10 @@ export class StepEffect {
       ),
       catchError(err => {
         console.log(err);
-        return of(new stepActions.GenderSelectionFail(err))})
+        return of(new stepActions.GenderSelectionFail(err));})
       )
     )
-  )
+  );
 
   @Effect({ dispatch: false })
   genderStepSuccess$: Observable<Action> = this.actions$.pipe(
@@ -114,6 +97,21 @@ export class StepEffect {
       ofType<stepActions.GenderSelectionFail>(stepActions.StepActionTypes.STEP2_GENDER_SELECTION_FAIL)
   );
 
+  @Effect()
+  getGenderData$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GET_GenderSelection>(
+      stepActions.StepActionTypes.STEP1_GETWELCOME
+    ),
+    mergeMap((action: stepActions.GET_GenderSelection) =>
+      this.stepService.GetGenderSelection(action).pipe(
+        map(
+          (user: any) =>
+            new stepActions.GET_GenderSelectionSuccess(user)
+        ),
+        catchError(err => of(new stepActions.GET_GenderSelectionFail(err)))
+      )
+    )
+  );
 
  /****STEP 3*****/
 
@@ -149,6 +147,22 @@ export class StepEffect {
   @Effect({ dispatch: false })
   ageStepFailure$: Observable<Action> = this.actions$.pipe(
       ofType<stepActions.GenderSelectionFail>(stepActions.StepActionTypes.STEP2_GENDER_SELECTION_FAIL)
+  );
+
+  @Effect()
+  getAgeData$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetAgeSelection>(
+      stepActions.StepActionTypes.STEP3_GET_AGE_SELECTION
+    ),
+    mergeMap((action: stepActions.GetAgeSelection) =>
+      this.stepService.GetAgeSelection(action).pipe(
+        map(
+          (user: any) =>
+            new stepActions.GetAgeSelectionSuccess(user)
+        ),
+        catchError(err => of(new stepActions.GetAgeSelectionFail(err)))
+      )
+    )
   );
 
   /****STEP 4*****/
@@ -187,6 +201,25 @@ export class StepEffect {
      ofType<stepActions.HeightSelectionFail>(stepActions.StepActionTypes.STEP4_Height_SELECTION_FAIL)
  );
 
+
+ @Effect()
+  getHeightData$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetHeightSelection>(
+      stepActions.StepActionTypes.STEP4_GET_Height_SELECTION
+    ),
+    mergeMap((action: stepActions.GetHeightSelection) =>
+      this.stepService.GetHeightSelection(action).pipe(
+        map(
+          (user: any) =>
+            new stepActions.GetHeightSelectionSuccess(user)
+        ),
+        catchError(err => of(new stepActions.GetHeightSelectionFail(err)))
+      )
+    )
+  );
+
+
+
 /****STEP 5*****/
 
 @Effect({ dispatch: false })
@@ -223,7 +256,21 @@ weightStepFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.WeightSelectionFail>(stepActions.StepActionTypes.STEP5_Weight_SELECTION_FAIL)
 );
 
-
+@Effect()
+getWeightData$: Observable<Action> = this.actions$.pipe(
+  ofType<stepActions.GetWeightSelection>(
+    stepActions.StepActionTypes.STEP5_GET_Weight_SELECTION
+  ),
+  mergeMap((action: stepActions.GetWeightSelection) =>
+    this.stepService.GetWeightSelection(action).pipe(
+      map(
+        (user: any) =>
+          new stepActions.GetWeightSelectionSuccess(user)
+      ),
+      catchError(err => of(new stepActions.GetWeightSelectionFail(err)))
+    )
+  )
+);
 
 /****STEP 7*****/
 

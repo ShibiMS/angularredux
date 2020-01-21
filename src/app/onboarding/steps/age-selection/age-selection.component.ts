@@ -4,6 +4,7 @@ import { StepsService } from '../steps.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-age-selection',
@@ -17,19 +18,32 @@ export class AgeSelectionComponent implements OnInit {
     { year: '1987' },
     { year: '1988' }
   ];
+  userId = localStorage.getItem('userid');
   ageForm: any;
   @Input()stepper: any;
   constructor(
-    private store : Store<any>,
+    private store: Store<any>,
     private agestepstepService: StepsService,
-    private formBuilder:  FormBuilder
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.ageForm = this.formBuilder.group({
       ageoptions: ['', Validators.required]});
+
+    this.store.dispatch(new stepActions.GetAgeSelection(this.userId));
+
+    const yearOfBirth  = this.store.select(stepsData.getAge);
+    yearOfBirth.subscribe(currentCustomer => {
+        if (currentCustomer) {
+          this.ageForm.patchValue({
+            ageoptions: currentCustomer.age,
+          });
+        }
+      });
+
   }
-  ageSubmit(){
+  ageSubmit() {
     const agestep: any = {
       yearOfBirth: this.ageForm.value.ageoptions
     };

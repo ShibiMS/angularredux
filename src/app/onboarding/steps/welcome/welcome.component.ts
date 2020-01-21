@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as stepActions from '../../steps/state/steps.actions';
 import { StepsService } from '../steps.service';
 import { MatStepper } from '@angular/material/stepper';
-
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-welcome',
@@ -15,7 +15,7 @@ import { MatStepper } from '@angular/material/stepper';
 export class WelcomeComponent implements OnInit {
   welcomeForm: any;
   @Input()stepper: any;
-
+  userId = localStorage.getItem('userid');
   constructor(
     private store: Store<any>,
     private formBuilder: FormBuilder,
@@ -26,7 +26,16 @@ export class WelcomeComponent implements OnInit {
     this.welcomeForm = this.formBuilder.group({
       firstName: ['', Validators.required]
     });
-    this.store.dispatch(new stepActions.WelcomeStep());
+    this.store.dispatch(new stepActions.GET_WelcomeStep(this.userId));
+
+    const firstname  = this.store.select(stepsData.getFirstName);
+    firstname.subscribe(currentCustomer => {
+      if (currentCustomer) {
+        this.welcomeForm.patchValue({
+          firstName: currentCustomer.firstName,
+        });
+      }
+    });
   }
 
   welcomeSubmit() {

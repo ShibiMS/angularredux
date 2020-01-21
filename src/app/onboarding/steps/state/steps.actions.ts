@@ -16,15 +16,28 @@ export enum StepActionTypes {
 
   /*****Step 2******/
   
-  STEP2_GENDER_SELECTION            = "GENDER SELECTION",
-  STEP2_GENDER_SELECTION_SUCCESS    = "GENDER SUCCESS",
-  STEP2_GENDER_SELECTION_FAIL        = "GENDER FAIL",
+  STEP2_GENDER_SELECTION          = "GENDER SELECTION",
+  STEP2_GENDER_SELECTION_SUCCESS  = "GENDER SUCCESS",
+  STEP2_GENDER_SELECTION_FAIL     = "GENDER FAIL",
+
+  // **** Get Gender ****/
+
+  STEP2_GET_GENDER_SELECTION          = "GET GENDER SELECTION",
+  STEP2_GET_GENDER_SELECTION_SUCCESS  = "GET GENDER SUCCESS",
+  STEP2_GET_GENDER_SELECTION_FAIL     = "GET GENDER FAIL", 
+
+  // **** Get Gender ****/
+
 
   /*****Step 3******/
   
-  STEP3_AGE_SELECTION            = "AGE SELECTION",
-  STEP3_AGE_SELECTION_SUCCESS    = "AGE SUCCESS",
+  STEP3_AGE_SELECTION             = "AGE SELECTION",
+  STEP3_AGE_SELECTION_SUCCESS     = "AGE SUCCESS",
   STEP3_AGE_SELECTION_FAIL        = "AGE FAIL",
+
+  STEP3_GET_AGE_SELECTION         = "GET AGE SELECTION",
+  STEP3_GET_AGE_SELECTION_SUCCESS = "GET AGE SUCCESS",
+  STEP3_GET_AGE_SELECTION_FAIL    = "GET AGE FAIL",
 
   /*****Step 4******/
   
@@ -32,11 +45,19 @@ export enum StepActionTypes {
   STEP4_Height_SELECTION_SUCCESS    = "Height SUCCESS",
   STEP4_Height_SELECTION_FAIL       = "Height FAIL",
 
+  STEP4_GET_Height_SELECTION         = "GET Height SELECTION",
+  STEP4_GET_Height_SELECTION_SUCCESS = "GET Height SUCCESS",
+  STEP4_GET_Height_SELECTION_FAIL    = "GET Height FAIL",
+
   /*****Step 5******/
   
   STEP5_Weight_SELECTION            = "Weight SELECTION",
   STEP5_Weight_SELECTION_SUCCESS    = "Weight SUCCESS",
   STEP5_Weight_SELECTION_FAIL       = "Weight FAIL",
+
+  STEP5_GET_Weight_SELECTION         = "Get Weight Selection",
+  STEP5_GET_Weight_SELECTION_SUCCESS = "Get Weight Success",
+  STEP5_GET_Weight_SELECTION_FAIL    = "Get Weight Fail",
 
   /*****Step 7******/
   
@@ -109,16 +130,16 @@ export class WelcomeStepFail implements Action {
 
 /***GET Data***/
 export class GET_WelcomeStep implements Action {  
-  readonly type = StepActionTypes.STEP1_WELCOME;
+  readonly type = StepActionTypes.STEP1_GETWELCOME;
   constructor(public payload: any) {}  
 }
 export class GET_WelcomeStepSuccess implements Action {
-    readonly type = StepActionTypes.STEP1_WELCOME_SUCCESS;  
+    readonly type = StepActionTypes.STEP1_GETWELCOME_SUCCESS;  
     constructor(public payload: any) {}
 }
   
 export class GET_WelcomeStepFail implements Action {
-    readonly type = StepActionTypes.STEP1_WELCOME_FAIL;  
+    readonly type = StepActionTypes.STEP1_GETWELCOME_FAIL;  
     constructor(public payload: any) {}
 }
 /***GET Data***/
@@ -139,6 +160,22 @@ export class GenderSelectionFail implements Action {
   constructor(public payload: any) {}
 }
 
+// ***** Get Gender ******/
+
+export class GET_GenderSelection implements Action {
+  readonly type = StepActionTypes.STEP2_GET_GENDER_SELECTION;  
+  constructor(public payload: any) {}
+}
+
+export class GET_GenderSelectionSuccess implements Action {
+  readonly type = StepActionTypes.STEP2_GET_GENDER_SELECTION_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GET_GenderSelectionFail implements Action {
+  readonly type = StepActionTypes.STEP2_GET_GENDER_SELECTION_FAIL;
+  constructor(public payload: any) {}
+}
+
 /*** STEP 3****/ 
 
 export class AgeSelection implements Action {
@@ -155,6 +192,21 @@ export class AgeSelectionFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetAgeSelection implements Action {
+  readonly type = StepActionTypes.STEP3_GET_AGE_SELECTION;  
+  constructor(public payload: any) {}
+}
+
+export class GetAgeSelectionSuccess implements Action {
+  readonly type = StepActionTypes.STEP3_GET_AGE_SELECTION_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetAgeSelectionFail implements Action {
+  readonly type = StepActionTypes.STEP3_GET_AGE_SELECTION_FAIL;
+  constructor(public payload: any) {}
+}
+
+
 /*** STEP 4 ****/ 
 
 export class HeightSelection implements Action {
@@ -169,6 +221,20 @@ export class HeightSelectionFail implements Action {
   readonly type = StepActionTypes.STEP4_Height_SELECTION_FAIL;
   constructor(public payload: any) {}
 }
+
+export class GetHeightSelection implements Action {
+  readonly type = StepActionTypes.STEP4_GET_Height_SELECTION;  
+  constructor(public payload: any) {}
+}
+export class GetHeightSelectionSuccess implements Action {
+  readonly type = StepActionTypes.STEP4_GET_Height_SELECTION_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetHeightSelectionFail implements Action {
+  readonly type = StepActionTypes.STEP4_GET_Height_SELECTION_FAIL;
+  constructor(public payload: any) {}
+}
+
 
 /*** STEP 5****/ 
 
@@ -185,6 +251,18 @@ export class WeightSelectionFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetWeightSelection implements Action {
+  readonly type = StepActionTypes.STEP5_GET_Weight_SELECTION;  
+  constructor(public payload: any) {}
+}
+export class GetWeightSelectionSuccess implements Action {
+  readonly type = StepActionTypes.STEP5_GET_Weight_SELECTION_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetWeightSelectionFail implements Action {
+  readonly type = StepActionTypes.STEP5_GET_Weight_SELECTION_FAIL;
+  constructor(public payload: any) {}
+}
 
 /*** STEP 7****/ 
 
@@ -335,15 +413,27 @@ export type Action =
 | GenderSelection
 | GenderSelectionSuccess
 | GenderSelectionFail
+| GET_GenderSelection
+| GET_GenderSelectionSuccess
+| GET_GenderSelectionFail
 | AgeSelection
 | AgeSelectionSuccess
 | AgeSelectionFail
+| GetAgeSelection
+| GetAgeSelectionSuccess
+| GetAgeSelectionFail
 | HeightSelection
 | HeightSelectionSuccess
 | HeightSelectionFail
+| GetHeightSelection
+| GetHeightSelectionSuccess
+| GetHeightSelectionFail
 | WeightSelection
 | WeightSelectionSuccess
 | WeightSelectionFail
+| GetWeightSelection
+| GetWeightSelectionSuccess
+| GetWeightSelectionFail
 | ProgressSelection
 | ProgressSelectionSuccess
 | ProgressSelectionFail

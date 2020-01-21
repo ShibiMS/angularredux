@@ -5,16 +5,20 @@
     <form [formGroup]="heightForm"  fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">        
       <mat-card-title>How about your height?</mat-card-title>       
-       <mat-form-field appearance="outline">        
+       <mat-form-field appearance="outline" fxFlex="50">        
         <mat-select [(ngModel)]="selectedValue" formControlName="heightoptions">
             <mat-option *ngFor="let height of heights" [value]="height.height">
               {{height.height}}
             </mat-option>
-       </mat-select> 
+       </mat-select>        
+      </mat-form-field> 
+      <mat-form-field appearance="outline" fxFlex="50"> 
+       <mat-select [(ngModel)]="selectedValue1" formControlName="heightmeasure">
+        <mat-option value="m/cm">m/cm</mat-option>
+        <mat-option value="ft/in">ft/in</mat-option>       
+      </mat-select>
       </mat-form-field>  
-    <p><mat-icon>help_outline</mat-icon> why we ask this</p>  
-    <!-- <app-fybrbuttons mat-button matStepperNext [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
-    </app-fybrbuttons>  -->
+    <p><mat-icon>help_outline</mat-icon> why we ask this</p>
     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
       <button mat-button (click)="heightSubmit()">NEXT</button>
     </div>

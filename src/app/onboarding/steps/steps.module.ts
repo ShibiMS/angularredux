@@ -47,7 +47,7 @@ const stepRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(stepRoute),
-    StoreModule.forRoot({stepReducer}),
+    StoreModule.forFeature('stepReducer', stepReducer),
     EffectsModule.forRoot([StepEffect]),
     HttpClientModule,
     MatStepperModule,

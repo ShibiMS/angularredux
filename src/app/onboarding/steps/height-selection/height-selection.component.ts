@@ -3,6 +3,7 @@ import { StepsService } from '../steps.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-height-selection',
@@ -12,12 +13,14 @@ import * as stepActions from '../../steps/state/steps.actions';
 export class HeightSelectionComponent implements OnInit {
   @Input()stepper: any;
   selectedValue: string;
+  selectedValue1: string;
   heights: any = [
     { height: '5.5' },
     { height: '6.2' },
     { height: '5.4' }
   ];
   heightForm: any;
+  userId = localStorage.getItem('userid');
   constructor(
     private store: Store<any>,
     private heightstepstepService: StepsService,
@@ -26,15 +29,30 @@ export class HeightSelectionComponent implements OnInit {
 
   ngOnInit() {
     this.heightForm = this.formBuilder.group({
-      heightoptions: ['', Validators.required]});
+      heightoptions: ['', Validators.required],
+      heightmeasure: ['', Validators.required]
+    });
+
+    this.store.dispatch(new stepActions.GetHeightSelection(this.userId));
+    const heightData  = this.store.select(stepsData.getHeight);
+    console.log('getHeight', heightData);
+    heightData.subscribe(currentCustomer => {
+      if (currentCustomer) {
+        this.heightForm.patchValue({
+          heightoptions: currentCustomer.height,
+          heightmeasure: currentCustomer.heightMeasure
+        });
+      }
+    });
+
   }
-  heightSubmit(){
+  heightSubmit() {
       const htstep: any = {
-        height: this.heightForm.value.heightoptions
+        height: this.heightForm.value.heightoptions,
+        heightMeasure: this.heightForm.value.heightmeasure
       };
       console.log('height dispatch', this.heightForm.value);
       this.store.dispatch(new stepActions.HeightSelection(htstep));
-      // this.heightstepstepService.step4heightSubmit(htstep);
       this.stepper.next();
   }
 }
