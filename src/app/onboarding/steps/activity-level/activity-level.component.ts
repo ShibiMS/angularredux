@@ -3,6 +3,7 @@ import { Options } from 'ng5-slider';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-activity-level',
@@ -13,7 +14,8 @@ import * as stepActions from '../../steps/state/steps.actions';
 export class ActivityLevelComponent implements OnInit {
   @Input() stepper: any;
   activityLevelform: FormGroup;
-  value: number = 50;
+  value = 50;
+  userId = localStorage.getItem('userid');
   options: Options = {
     showTicksValues: true,
     stepsArray: [
@@ -30,6 +32,17 @@ export class ActivityLevelComponent implements OnInit {
   ngOnInit() {
     this.activityLevelform = this.formbuilder.group({
       sliderValue: ['']
+    });
+    this.store.dispatch(new stepActions.GetActivityLevel(this.userId));
+    const activitylevelData  = this.store.select(stepsData.getactivitylevel);
+    console.log('activitylevelData', activitylevelData);
+    activitylevelData.subscribe(currentCustomer => {
+      console.log('activitylevelDatacurrentCustomer', currentCustomer);
+      if (currentCustomer) {
+        this.activityLevelform.patchValue({
+          sliderValue: currentCustomer.activityLevel
+        });
+      }
     });
   }
 

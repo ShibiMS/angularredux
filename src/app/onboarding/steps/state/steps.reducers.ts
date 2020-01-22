@@ -8,6 +8,14 @@ const initialState = {
                         age:            '',
                         height:         '',
                         heightMeasure:  '',
+                        weight:         '',
+                        weightMeasure:  '',
+                        bodyMeasurementBy: '',
+                        Measure: {},
+                        weightExtra: {},
+                        physicalgoal: {},
+                        activitylevel: '',
+                        workoutPerWeek: '',
                         errorMessage:   ''
                     };
 export function stepReducer(state = initialState, action: stepActions.Action) {
@@ -107,7 +115,8 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
         console.log('GET HEIGHT SELECTION FAILURE', action.payload);
         return {
             ...state,
-            age: '',
+            height: '',
+            heightMeasure: '',
             errorMessage: 'Error Occured'
         };
 
@@ -116,8 +125,8 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
         console.log('GET WEIGHT SELECTION SUCCESS', action.payload);
         return {
             ...state,
-            weight: action.payload.data.height.weight,
-            weightMeasure: action.payload.data.height.weightMeasure,
+            weight: action.payload.data.weight.weight,
+            weightMeasure: action.payload.data.weight.weightMeasure,
             errorMessage: null
         };
     }
@@ -125,16 +134,50 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
         console.log('GET WEIGHT SELECTION FAILURE', action.payload);
         return {
             ...state,
-            age: '',
+            weight: '',
+            weightMeasure: '',
             errorMessage: 'Error Occured'
         };
 
+    }
+    case stepActions.StepActionTypes.STEP7_GET_Progress_SELECTION_SUCCESS: {
+        console.log('GET Progress SELECTION SUCCESS', action.payload.data.bodyMeasurementBy);
+        return {
+            ...state,
+            bodyMeasurementBy: action.payload.data.bodyMeasurementBy,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP7_GET_Progress_SELECTION_FAIL: {
+        console.log('GET PROGRESS SELECTION FAILURE', action.payload);
+        return {
+            ...state,
+            bodyMeasurementBy: '',
+            errorMessage: 'Error Occured'
+        };
+
+    }
+    case stepActions.StepActionTypes.STEP7_GET_Progress_SELECTION_SUCCESS: {
+        console.log('GET Progress SELECTION SUCCESS', action.payload.data.bodyMeasurementBy);
+        return {
+            ...state,
+            bodyMeasurementBy: action.payload.data.bodyMeasurementBy,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP7_GET_Progress_SELECTION_FAIL: {
+        console.log('GET PROGRESS SELECTION FAILURE', action.payload);
+        return {
+            ...state,
+            bodyMeasurementBy: '',
+            errorMessage: 'Error Occured'
+        };
     }
     case stepActions.StepActionTypes.STEP8_Profile_Upload_SUCCESS: {
         console.log('Profile Upload Success', action.payload);
         return {
             ...state,
-            loggedInData: action.payload,
+            profileData: action.payload,
             errorMessage: null
         };
 
@@ -143,8 +186,88 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
         console.log('Profile Upload Failure', action.payload);
         return {
             ...state,
-            loggedInData: action.payload,
+            profileData: '',
             errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP9_GET_BodyMeasure_SUCCESS: {
+        console.log('GET Body Measure SUCCESS', action.payload.data.bodyMeasurementObj.Measure);
+        return {
+            ...state,
+            Measure: action.payload.data.bodyMeasurementObj.Measure,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP9_GET_BodyMeasure_FAIL: {
+        console.log('GET Body Measure FAILURE', action.payload);
+        return {
+            ...state,
+            Measure: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.STEP10_GET_WeightExtra_SUCCESS: {
+        console.log('GET WEIGHT SUCCESS', action.payload);
+        return {
+            ...state,
+            weightExtra: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP10_GET_WeightExtra_FAIL: {
+        console.log('GET WEIGHT FAILURE', action.payload);
+        return {
+            ...state,
+            weightExtra: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.STEP11_GET_PhysiqueGoal_SUCCESS: {
+        console.log('GET PHYSICAL SUCCESS', action.payload);
+        return {
+            ...state,
+            physicalgoal: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP11_GET_PhysiqueGoal_FAIL: {
+        console.log('GET PHYSICAL FAILURE', action.payload);
+        return {
+            ...state,
+            physicalgoal: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.STEP12_GET_ActivityLevel_SUCCESS: {
+        console.log('GET ActivityLevel SUCCESS', action.payload);
+        return {
+            ...state,
+            activitylevel: action.payload.data.activityLevel,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP12_GET_ActivityLevel_FAIL: {
+        console.log('GET ActivityLevel FAILURE', action.payload);
+        return {
+            ...state,
+            activitylevel: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.STEP13_GET_WorkOuts_SUCCESS: {
+        console.log('GET ActivityLevel SUCCESS', action.payload);
+        return {
+            ...state,
+            workoutPerWeek: action.payload.data.workoutPerWeek,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP13_GET_WorkOuts_FAIL: {
+        console.log('GET ActivityLevel FAILURE', action.payload);
+        return {
+            ...state,
+            workoutPerWeek: '',
+            errorMessage: 'Error Occured'
         };
     }
     default: {
@@ -171,6 +294,34 @@ export const getAge = createSelector(
 );
 
 export const getHeight = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getWeight = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getProgressSelection = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getBodyMeasurements = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getWeightExtra = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getPhysiquegoal = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getactivitylevel = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getworkoutData = createSelector(
     getOnboardingFeatureState,
     (state: any) => state
 );

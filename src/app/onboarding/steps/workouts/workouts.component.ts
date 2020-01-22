@@ -3,6 +3,7 @@ import { Options } from 'ng5-slider';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-workouts',
@@ -12,7 +13,8 @@ import * as stepActions from '../../steps/state/steps.actions';
 })
 export class WorkoutsComponent implements OnInit {
   @Input() stepper: any;
-  workOutForm: FormGroup
+  workOutForm: FormGroup;
+  userId = localStorage.getItem('userid');
   value: number = 4;
   options: Options = {
     showTicksValues: true,
@@ -32,6 +34,17 @@ export class WorkoutsComponent implements OnInit {
   ngOnInit() {
     this.workOutForm = this.formbuilder.group({
       workoutlevel: [3]
+    });
+    this.store.dispatch(new stepActions.GetWorkOutLevel(this.userId));
+    const WorkoutData  = this.store.select(stepsData.getworkoutData);
+    console.log('WorkoutDATA', WorkoutData);
+    WorkoutData.subscribe(currentCustomer => {
+      console.log('activitylevelDatacurrentCustomer', currentCustomer);
+      if (currentCustomer) {
+        this.workOutForm.patchValue({
+          workoutlevel: currentCustomer.workoutPerWeek
+        });
+      }
     });
   }
 

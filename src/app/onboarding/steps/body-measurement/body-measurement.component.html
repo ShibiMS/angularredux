@@ -6,7 +6,8 @@
       <mat-card-title fxFlex="100" >Record your measurements</mat-card-title> 
       <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
         <span>In</span>
-        <mat-slide-toggle (change) = "onChangeMeasurement($event)"></mat-slide-toggle><span>cm</span>
+        <mat-slide-toggle (change) = "onChangeMeasurement($event)" [checked]="togglechecked"
+        ></mat-slide-toggle><span>cm</span>
       </div>      
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
             <form [formGroup]="bodymeasureForm">

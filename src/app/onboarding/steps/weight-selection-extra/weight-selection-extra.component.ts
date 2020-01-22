@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-weight-selection-extra',
@@ -13,14 +14,26 @@ export class WeightSelectionExtraComponent implements OnInit {
   @Input()stepper: any;
   weightSelectionForm: FormGroup;
   bodyType: any;
+  userId = localStorage.getItem('userid');
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<any>
   ) { }
 
   ngOnInit() {
-  this.weightSelectionForm = this.formBuilder.group({
+    this.weightSelectionForm = this.formBuilder.group({
       weightChoose: ['', Validators.required]
+    });
+    this.store.dispatch(new stepActions.GetWeightExtra(this.userId));
+    const WeightExtraData  = this.store.select(stepsData.getWeightExtra);
+    console.log('weightSelectionForm', WeightExtraData);
+    WeightExtraData.subscribe(currentCustomer => {
+      console.log('currentCustomer', currentCustomer);
+      if (currentCustomer) {
+        this.weightSelectionForm.patchValue({
+          weightChoose: currentCustomer.id
+        });
+      }
     });
   }
 

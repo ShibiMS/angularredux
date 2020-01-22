@@ -65,11 +65,20 @@ export enum StepActionTypes {
   STEP7_Progress_SELECTION_SUCCESS  = "Progress Success",
   STEP7_Progress_SELECTION_FAIL     = "Progress Fail",
 
+
+  STEP7_GET_Progress_SELECTION          = "Get Progress Selection",
+  STEP7_GET_Progress_SELECTION_SUCCESS  = "Get Progress Success",
+  STEP7_GET_Progress_SELECTION_FAIL     = "Get Progress Fail",
+
   /*****Step 8******/
   
-  STEP8_Profile_Upload          = "Profile picture upload",
-  STEP8_Profile_Upload_SUCCESS  = "Profile picture upload success",
-  STEP8_Profile_Upload_FAIL     = "Profile picture upload fail",
+  STEP8_Profile_Upload              = "Profile picture upload",
+  STEP8_Profile_Upload_SUCCESS      = "Profile picture upload success",
+  STEP8_Profile_Upload_FAIL         = "Profile picture upload fail",
+
+  STEP8_GET_Profile_Upload          = "Get Profile picture upload",
+  STEP8_GET_Profile_Upload_SUCCESS  = "Get Profile picture upload success",
+  STEP8_GET_Profile_Upload_FAIL     = "Get Profile picture upload fail",
 
   /*****Step 9******/
   
@@ -77,11 +86,19 @@ export enum StepActionTypes {
   STEP9_BodyMeasure_SUCCESS   = "Body Measurement Success",
   STEP9_BodyMeasure_FAIL      = "Body Measurement Fail",
 
+  STEP9_GET_BodyMeasure           = "Get Body Measurement",
+  STEP9_GET_BodyMeasure_SUCCESS   = "Get Body Measurement Success",
+  STEP9_GET_BodyMeasure_FAIL      = "Get Body Measurement Fail",
+
   /*****Step 10******/
   
   STEP10_WeightExtra          = "Weight Extra Selection",
   STEP10_WeightExtra_SUCCESS  = "Weight Extra Success",
   STEP10_WeightExtra_FAIL     = "Weight Extra Fail",
+
+  STEP10_GET_WeightExtra          = "Get Weight Extra Selection",
+  STEP10_GET_WeightExtra_SUCCESS  = "Get Weight Extra Success",
+  STEP10_GET_WeightExtra_FAIL     = "Get Weight Extra Fail",
 
   /*****Step 11******/
   
@@ -89,6 +106,9 @@ export enum StepActionTypes {
   STEP11_PhysiqueGoal_SUCCESS = "Physique Goal Success",
   STEP11_PhysiqueGoal_FAIL    = "Physique Goal Fail",
 
+  STEP11_GET_PhysiqueGoal         = "Get Physique Goal Selection",
+  STEP11_GET_PhysiqueGoal_SUCCESS = "Get Physique Goal Success",
+  STEP11_GET_PhysiqueGoal_FAIL    = "Get Physique Goal Fail",
 
   /*****Step 12******/
   
@@ -96,11 +116,19 @@ export enum StepActionTypes {
   STEP12_ActivityLevel_SUCCESS  = "Activity Level Success",
   STEP12_ActivityLevel_FAIL     = "Activity Level Fail",
 
+  STEP12_GET_ActivityLevel          = "Get Activity Level",
+  STEP12_GET_ActivityLevel_SUCCESS  = "Get Activity Level Success",
+  STEP12_GET_ActivityLevel_FAIL     = "Get Activity Level Fail",
+
   /*****Step 13******/
   
   STEP13_WorkOuts          = "WorkOuts",
   STEP13_WorkOuts_SUCCESS  = "WorkOuts Success",
   STEP13_WorkOuts_FAIL     = "WorkOuts Fail",
+
+  STEP13_GET_WorkOuts          = "Get WorkOuts",
+  STEP13_GET_WorkOuts_SUCCESS  = "Get WorkOuts Success",
+  STEP13_GET_WorkOuts_FAIL     = "Get WorkOuts Fail",
 
   /*****Step 14******/
   
@@ -279,6 +307,18 @@ export class ProgressSelectionFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetProgressSelection implements Action {
+  readonly type = StepActionTypes.STEP7_GET_Progress_SELECTION;  
+  constructor(public payload: any) {}
+}
+export class GetProgressSelectionSuccess implements Action {
+  readonly type = StepActionTypes.STEP7_GET_Progress_SELECTION_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetProgressSelectionFail implements Action {
+  readonly type = StepActionTypes.STEP7_GET_Progress_SELECTION_FAIL;
+  constructor(public payload: any) {}
+}
 
 /*** STEP 8****/ 
 
@@ -288,14 +328,26 @@ export class ProfilePicUpload implements Action {
 }
 export class ProfilePicUploadSuccess implements Action {
   readonly type = StepActionTypes.STEP8_Profile_Upload_SUCCESS;
-  constructor(public payload: any) {
-    console.log('pic success upload', payload);
-  }
+  constructor(public payload: any) {}
 }
 export class ProfilePicUploadFail implements Action {
   readonly type = StepActionTypes.STEP8_Profile_Upload_FAIL;
   constructor(public payload: any) {}
 }
+
+export class GetProfilePicUpload implements Action {
+  readonly type = StepActionTypes.STEP8_GET_Profile_Upload;  
+  constructor(public payload: any) {}
+}
+export class GetProfilePicUploadSuccess implements Action {
+  readonly type = StepActionTypes.STEP8_GET_Profile_Upload_SUCCESS;
+  constructor(public payload: any) { }
+}
+export class GetProfilePicUploadFail implements Action {
+  readonly type = StepActionTypes.STEP8_GET_Profile_Upload_FAIL;
+  constructor(public payload: any) {}
+}
+
 
 /*** STEP 9****/ 
 
@@ -309,6 +361,20 @@ export class BodyMeasureSuccess implements Action {
 }
 export class BodyMeasureFail implements Action {
   readonly type = StepActionTypes.STEP9_BodyMeasure_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class GetBodyMeasure implements Action {
+  readonly type = StepActionTypes.STEP9_GET_BodyMeasure;  
+  constructor(public payload: any) {}
+}
+export class GetBodyMeasureSuccess implements Action {
+  readonly type = StepActionTypes.STEP9_GET_BodyMeasure_SUCCESS;
+  constructor(public payload: any) {console.log('payload',payload);
+  }
+}
+export class GetBodyMeasureFail implements Action {
+  readonly type = StepActionTypes.STEP9_GET_BodyMeasure_FAIL;
   constructor(public payload: any) {}
 }
 
@@ -327,6 +393,19 @@ export class WeightExtraFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetWeightExtra implements Action {
+  readonly type = StepActionTypes.STEP10_GET_WeightExtra;  
+  constructor(public payload: any) {}
+}
+export class GetWeightExtraSuccess implements Action {
+  readonly type = StepActionTypes.STEP10_GET_WeightExtra_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetWeightExtraFail implements Action {
+  readonly type = StepActionTypes.STEP10_GET_WeightExtra_FAIL;
+  constructor(public payload: any) {}
+}
+
 /*** STEP 11****/ 
 
 export class PhysiqueGoal implements Action {
@@ -339,6 +418,19 @@ export class PhysiqueGoalSuccess implements Action {
 }
 export class PhysiqueGoalFail implements Action {
   readonly type = StepActionTypes.STEP11_PhysiqueGoal_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class GetPhysiqueGoal implements Action {
+  readonly type = StepActionTypes.STEP11_GET_PhysiqueGoal;  
+  constructor(public payload: any) {}
+}
+export class GetPhysiqueGoalSuccess implements Action {
+  readonly type = StepActionTypes.STEP11_GET_PhysiqueGoal_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetPhysiqueGoalFail implements Action {
+  readonly type = StepActionTypes.STEP11_GET_PhysiqueGoal_FAIL;
   constructor(public payload: any) {}
 }
 
@@ -357,6 +449,19 @@ export class ActivityLevelFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetActivityLevel implements Action {
+  readonly type = StepActionTypes.STEP12_GET_ActivityLevel;  
+  constructor(public payload: any) {}
+}
+export class GetActivityLevelSuccess implements Action {
+  readonly type = StepActionTypes.STEP12_GET_ActivityLevel_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetActivityLevelFail implements Action {
+  readonly type = StepActionTypes.STEP12_GET_ActivityLevel_FAIL;
+  constructor(public payload: any) {}
+}
+
 /*** STEP 13****/ 
 
 export class WorkOutLevel implements Action {
@@ -372,7 +477,18 @@ export class WorkOutLevelFail implements Action {
   constructor(public payload: any) {}
 }
 
-
+export class GetWorkOutLevel implements Action {
+  readonly type = StepActionTypes.STEP13_GET_WorkOuts;  
+  constructor(public payload: any) {}
+}
+export class GetWorkOutLevelSuccess implements Action {
+  readonly type = StepActionTypes.STEP13_GET_WorkOuts_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetWorkOutLevelFail implements Action {
+  readonly type = StepActionTypes.STEP13_GET_WorkOuts_FAIL;
+  constructor(public payload: any) {}
+}
 /*** STEP 14****/ 
 
 export class FitnessGoal implements Action {
@@ -437,24 +553,45 @@ export type Action =
 | ProgressSelection
 | ProgressSelectionSuccess
 | ProgressSelectionFail
+| GetProgressSelection
+| GetProgressSelectionSuccess
+| GetProgressSelectionFail
 | ProfilePicUpload
 | ProfilePicUploadSuccess
 | ProfilePicUploadFail
+| GetProfilePicUpload
+| GetProfilePicUploadSuccess
+| GetProfilePicUploadFail
 | BodyMeasure
 | BodyMeasureSuccess
 | BodyMeasureFail
+| GetBodyMeasure
+| GetBodyMeasureSuccess
+| GetBodyMeasureFail
 | WeightExtra
 | WeightExtraSuccess
 | WeightExtraFail
+| GetWeightExtra
+| GetWeightExtraSuccess
+| GetWeightExtraFail
 | PhysiqueGoal
 | PhysiqueGoalSuccess
 | PhysiqueGoalFail
+| GetPhysiqueGoal
+| GetPhysiqueGoalSuccess
+| GetPhysiqueGoalFail
 | ActivityLevel
 | ActivityLevelSuccess
 | ActivityLevelFail
+| GetActivityLevel
+| GetActivityLevelSuccess
+| GetActivityLevelFail
 | WorkOutLevel
 | WorkOutLevelSuccess
 | WorkOutLevelFail
+| GetWorkOutLevel
+| GetWorkOutLevelSuccess
+| GetWorkOutLevelFail
 | FitnessGoal
 | FitnessGoalSuccess
 | FitnessGoalFail

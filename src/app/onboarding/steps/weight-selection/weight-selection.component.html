@@ -6,13 +6,19 @@
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">        
       <mat-card-title>Time for the sensitive stuff</mat-card-title>       
       <mat-card-subtitle>	How about your weigh?</mat-card-subtitle>	    
-       <mat-form-field appearance="outline">        
+       <mat-form-field appearance="outline" fxFlex="50">        
         <mat-select [(ngModel)]="selectedValue" name="weight" formControlName="weightoptions">
             <mat-option *ngFor="let weight of weights" [value]="weight.weight">
               {{weight.weight}}
             </mat-option>
           </mat-select> 
-      </mat-form-field>  
+      </mat-form-field> 
+      <mat-form-field appearance="outline" fxFlex="50">        
+        <mat-select name="weightmeasure" formControlName="weightmeasure">
+            <mat-option value="lb">lb</mat-option>
+            <mat-option value="kg">kg</mat-option>
+          </mat-select> 
+      </mat-form-field> 
     <p><mat-icon>help_outline</mat-icon> why we ask this</p>  
     <!-- <app-fybrbuttons mat-button matStepperNext [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
     </app-fybrbuttons>  -->

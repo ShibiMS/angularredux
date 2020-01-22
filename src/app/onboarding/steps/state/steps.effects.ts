@@ -308,7 +308,21 @@ progressStepFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.ProgressSelectionFail>(stepActions.StepActionTypes.STEP7_Progress_SELECTION_FAIL)
 );
 
-
+@Effect()
+getProgressData$: Observable<Action> = this.actions$.pipe(
+  ofType<stepActions.GetProgressSelection>(
+    stepActions.StepActionTypes.STEP7_GET_Progress_SELECTION
+  ),
+  mergeMap((action: stepActions.GetProgressSelection) =>
+    this.stepService.GetProgressSelection(action).pipe(
+      map(
+        (user: any) =>
+          new stepActions.GetProgressSelectionSuccess(user)
+      ),
+      catchError(err => of(new stepActions.GetProgressSelectionFail(err)))
+    )
+  )
+);
   /****STEP 8*****/
 
 @Effect()
@@ -358,6 +372,28 @@ ProfilePicFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.ProfilePicUploadFail>(stepActions.StepActionTypes.STEP8_Profile_Upload_FAIL)
 );
 
+// @Effect()
+// getProfilePicStep$ = this.actions$.pipe(ofType<stepActions.GetProfilePicUpload>(
+//   stepActions.StepActionTypes.STEP8_GET_Profile_Upload),
+//   map((action: stepActions.GetProfilePicUpload) => {
+//    console.log('Profile Pic Upload', action.payload);
+//    return action.payload;
+//   }),
+//   switchMap((progress: any) =>
+//     this.stepService.GetProfilePhotoUpload(progress).pipe(
+//       map(
+//         (profilepicdata: any) => {
+//           console.log('profilepicdata', profilepicdata);
+//           return new stepActions.GetProfilePicUploadSuccess(profilepicdata);
+//         }
+//     ),
+//     catchError(err => {
+//       console.log(err);
+//       return of(new stepActions.GetProfilePicUploadFail(err));
+//     })
+//     )
+//   )
+// );
 
 /****STEP 9*****/
 
@@ -393,6 +429,29 @@ BodyMeasureSuccess$: Observable<Action> = this.actions$.pipe(
 @Effect({ dispatch: false })
 BodyMeasureFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.BodyMeasureFail>(stepActions.StepActionTypes.STEP9_BodyMeasure_FAIL)
+);
+
+
+@Effect()
+GetBodyMeasureStep$ = this.actions$.pipe(ofType<stepActions.GetBodyMeasure>(
+  stepActions.StepActionTypes.STEP9_GET_BodyMeasure),
+  map((action: stepActions.GetBodyMeasure) => {
+   console.log('Get Body Measure action', action.payload);
+   return action.payload;
+  }),
+  switchMap((measures: any) =>
+    this.stepService.step9_GetBodyMeasureSubmit(measures).pipe(
+      map(
+        (measureuserData: any) => {
+          return new stepActions.GetBodyMeasureSuccess(measureuserData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetBodyMeasureFail(err));
+    })
+    )
+  )
 );
 
 /****STEP 10*****/
@@ -431,6 +490,29 @@ WeightExtraFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.WeightExtraFail>(stepActions.StepActionTypes.STEP10_WeightExtra_FAIL)
 );
 
+@Effect()
+GetWeightExtraStep$ = this.actions$.pipe(ofType<stepActions.GetWeightExtra>(
+  stepActions.StepActionTypes.STEP10_GET_WeightExtra),
+  map((action: stepActions.GetWeightExtra) => {
+   console.log('Get Weight action', action.payload);
+   return action.payload;
+  }),
+  switchMap((weight: any) =>
+    this.stepService.step10_GetWeightExtraSubmit(weight).pipe(
+      map(
+        (weightuserData: any) => {
+          console.log('Get Weight Data', weightuserData);
+          return new stepActions.GetWeightExtraSuccess(weightuserData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetWeightExtraFail(err));
+    })
+    )
+  )
+);
+
 /****STEP 11*****/
 
 @Effect({ dispatch: false })
@@ -467,6 +549,29 @@ physiquegoalFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.PhysiqueGoalFail>(stepActions.StepActionTypes.STEP11_PhysiqueGoal_FAIL)
 );
 
+
+@Effect()
+getphysiquegoalStep$ = this.actions$.pipe(ofType<stepActions.GetPhysiqueGoal>(
+  stepActions.StepActionTypes.STEP11_GET_PhysiqueGoal),
+  map((action: stepActions.GetPhysiqueGoal) => {
+   console.log('Get Physique action', action.payload);
+   return action.payload;
+  }),
+  switchMap((PhysiqueGoal: any) =>
+    this.stepService.step11_GetPhysiqueGoalSubmit(PhysiqueGoal).pipe(
+      map(
+        (PhysiqueGoalData: any) => {
+          console.log('Get Physique Data', PhysiqueGoalData);
+          return new stepActions.GetPhysiqueGoalSuccess(PhysiqueGoalData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetPhysiqueGoalFail(err));
+    })
+    )
+  )
+);
 /****STEP 12*****/
 
 @Effect({ dispatch: false })
@@ -504,6 +609,29 @@ activityLevelFailure$: Observable<Action> = this.actions$.pipe(
 );
 
 
+@Effect()
+getactivityLevelStep$ = this.actions$.pipe(ofType<stepActions.GetActivityLevel>(
+  stepActions.StepActionTypes.STEP12_GET_ActivityLevel),
+  map((action: stepActions.GetActivityLevel) => {
+   console.log('Get Activity Level action', action.payload);
+   return action.payload;
+  }),
+  switchMap((ActivityLevel: any) =>
+    this.stepService.step12_GetActivityLevelSubmit(ActivityLevel).pipe(
+      map(
+        (ActivityLevelData: any) => {
+          console.log('Activity Level Data', ActivityLevelData);
+          return new stepActions.GetActivityLevelSuccess(ActivityLevelData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetActivityLevelFail(err));
+    })
+    )
+  )
+);
+
 /****STEP 13*****/
 
 @Effect({ dispatch: false })
@@ -538,6 +666,29 @@ workoutLevelSuccess$: Observable<Action> = this.actions$.pipe(
 @Effect({ dispatch: false })
 workoutLevelFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.WorkOutLevelFail>(stepActions.StepActionTypes.STEP13_WorkOuts_FAIL)
+);
+
+@Effect()
+getworkoutLevelStep$ = this.actions$.pipe(ofType<stepActions.GetWorkOutLevel>(
+  stepActions.StepActionTypes.STEP13_GET_WorkOuts),
+  map((action: stepActions.GetWorkOutLevel) => {
+   console.log('Get Workout Level action', action.payload);
+   return action.payload;
+  }),
+  switchMap((WorkOutLevel: any) =>
+    this.stepService.step13_GetWorkOutLevel(WorkOutLevel).pipe(
+      map(
+        (WorkOutLevelData: any) => {
+          console.log('Get WorkOutLevelData', WorkOutLevelData);
+          return new stepActions.GetWorkOutLevelSuccess(WorkOutLevelData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetWorkOutLevelFail(err));
+    })
+    )
+  )
 );
 
 /****STEP 14*****/

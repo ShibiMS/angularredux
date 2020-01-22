@@ -28,5 +28,6 @@ export class FitnessGoalComponent implements OnInit {
       fitnessgoal: [this.fitnessGoalForm.value.fitnessGoalValue]
     };
     this.store.dispatch(new stepActions.FitnessGoal(fitnessgoalstep));
+    this.stepper.next();
   }
 }

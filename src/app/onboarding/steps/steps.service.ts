@@ -137,7 +137,7 @@ export class StepsService {
       userId : this.userId,
       weight: {
         weight: payload.weight,
-        weightMeasure: 'cm'
+        weightMeasure: payload.weightMeasure
       },
       accessToken: this.accessToken
     };
@@ -169,7 +169,14 @@ export class StepsService {
     return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step7`,
      postData, this.httpOptions);
   }
-
+  GetProgressSelection(payload: any) {
+    console.log('Get Progress Selection');
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step7?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  }
 //  ProfilePhotoUpload(payload: any) {
 //   console.log('ProfilePhotoUpload', payload);
 //   this.httpOptions = {
@@ -222,6 +229,10 @@ ProfilePhotoUpload(payload: any) {
         postData, this.httpOptions);
  }
 
+ GetProfilePhotoUpload(payload: any) {
+  console.log('GetProfilePhotoUpload', payload);
+ }
+
  step9_BodyMeasureSubmit(payload: any) {
   console.log('step9 service', payload);
   this.httpOptions = {
@@ -237,6 +248,14 @@ ProfilePhotoUpload(payload: any) {
    postData, this.httpOptions);
 }
 
+step9_GetBodyMeasureSubmit(payload: any) {
+  console.log('step9 get service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step9?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+}
 step10_WeightExtraSubmit(payload: any) {
   console.log('step10 service', payload);
   this.httpOptions = {
@@ -251,7 +270,14 @@ step10_WeightExtraSubmit(payload: any) {
   return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step10`,
    postData, this.httpOptions);
 }
-
+step10_GetWeightExtraSubmit(payload: any) {
+  console.log('step10 service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step10?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+}
 step11_PhysiqueGoalSubmit(payload: any) {
   console.log('step11 service', payload);
   this.httpOptions = {
@@ -265,7 +291,15 @@ step11_PhysiqueGoalSubmit(payload: any) {
   return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step11`,
    postData, this.httpOptions);
 }
+step11_GetPhysiqueGoalSubmit(payload: any) {
+  console.log('step11 service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step11?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
 
+}
 step12_ActivityLevelSubmit(payload: any) {
   console.log('step12 service', payload);
   this.httpOptions = {
@@ -278,6 +312,15 @@ step12_ActivityLevelSubmit(payload: any) {
   };
   return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step12`,
    postData, this.httpOptions);
+}
+
+step12_GetActivityLevelSubmit(payload: any) {
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step12?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+
 }
 
 step13_WorkOutLevel(payload: any) {
@@ -293,7 +336,14 @@ step13_WorkOutLevel(payload: any) {
   return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step13`,
    postData, this.httpOptions);
 }
+step13_GetWorkOutLevel(payload: any) {
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step13?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
 
+}
 step14_FitnessGoalLevel(payload: any) {
   console.log('FitnessGoalLevel service', payload);
   this.httpOptions = {

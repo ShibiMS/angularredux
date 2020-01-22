@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { StepsService } from '../steps.service';
 import { Store, State, select } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
+import * as stepsData from '../../steps/state/steps.reducers';
 
 @Component({
   selector: 'app-photo-upload-section',
