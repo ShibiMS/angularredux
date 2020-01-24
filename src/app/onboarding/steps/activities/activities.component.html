@@ -1,5 +1,7 @@
 <div id="activitiesstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+  <span class="backSteps" (click)="stepsToback()">back</span>
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Activities
+        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>    
     </h3>
     <mat-card class="steps-card" fxFlex="45" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
         <mat-card-title>Let's make this more "you".</mat-card-title>
@@ -881,7 +883,7 @@
         </div>
         
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext>NEXT</button>
+            <button mat-button matStepperNext (click)="activitySubmit()">NEXT</button>
         </div>
     </mat-card>
 </div>

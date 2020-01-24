@@ -27,6 +27,12 @@
       height:100%;
     }
   }
+  .backSteps{
+    position: absolute;
+    left:8%;
+    color:#ffffff;
+    cursor: pointer;
+  }
   .logotop {
     img {
       position: absolute;
@@ -64,6 +70,7 @@
       font-weight: normal;   
       right:8%;
       position: absolute;
+      cursor: pointer;
     }
   }
   .helptext{

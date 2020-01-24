@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
@@ -12,6 +12,7 @@ import * as stepsData from '../../steps/state/steps.reducers';
 export class BodyMeasurementComponent implements OnInit {
   bodymeasureForm: FormGroup;
   @Input()stepper: any;
+  @Output() outputToParent = new EventEmitter<number>();
   measurechecked: string;
   togglechecked = true;
   userId = localStorage.getItem('userid');
@@ -73,5 +74,10 @@ export class BodyMeasurementComponent implements OnInit {
   };
   this.store.dispatch(new stepActions.BodyMeasure(measureStep));
   this.stepper.next();
+  this.outputToParent.emit(5);
+  }
+  skipTonext() {
+    this.stepper.next();
+    this.outputToParent.emit(5);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
@@ -11,6 +11,8 @@ import * as stepsData from '../../steps/state/steps.reducers';
 })
 export class ProgressSelectionComponent implements OnInit {
   @Input()stepper: any;
+  @Output() outputToParent = new EventEmitter<number>();
+
   progressForm: any;
   userId = localStorage.getItem('userid');
   constructor(
@@ -40,5 +42,14 @@ export class ProgressSelectionComponent implements OnInit {
                          };
     this.store.dispatch(new stepActions.ProgressSelection(progressStep));
     this.stepper.next();
+    this.outputToParent.emit(5);
+  }
+  stepsToback() {
+    this.stepper.previous();
+    this.outputToParent.emit(-5);
+  }
+  skipTonext() {
+    this.stepper.next();
+    this.outputToParent.emit(5);
   }
 }

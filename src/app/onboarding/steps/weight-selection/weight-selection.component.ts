@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StepsService } from '../steps.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -12,11 +12,12 @@ import * as stepsData from '../../steps/state/steps.reducers';
 })
 export class WeightSelectionComponent implements OnInit {
   @Input()stepper: any;
+  @Output() outputToParent = new EventEmitter<number>();
   selectedValue: string;
   weights: any = [
-    { weight: '5.5' },
-    { weight: '6.2' },
-    { weight: '5.4' }
+    { weight: '55' },
+    { weight: '62' },
+    { weight: '54' }
   ];
   weightForm: any;
   userId = localStorage.getItem('userid');
@@ -53,5 +54,10 @@ export class WeightSelectionComponent implements OnInit {
     this.store.dispatch(new stepActions.WeightSelection(wtstep));
    // this.weightstepstepService.step5weightSubmit(wtstep);
     this.stepper.next();
+    this.outputToParent.emit(5);
+  }
+  stepsToback() {
+    this.stepper.previous();
+    this.outputToParent.emit(-5);
   }
 }

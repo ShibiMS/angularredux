@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { Options } from 'ng5-slider';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -13,6 +13,7 @@ import * as stepsData from '../../steps/state/steps.reducers';
 })
 export class WorkoutsComponent implements OnInit {
   @Input() stepper: any;
+  @Output()outputToParent = new EventEmitter<number>();
   workOutForm: FormGroup;
   userId = localStorage.getItem('userid');
   value: number = 4;
@@ -55,6 +56,16 @@ export class WorkoutsComponent implements OnInit {
     };
     this.store.dispatch(new stepActions.WorkOutLevel(workoutstep));
     this.stepper.next();
+    this.outputToParent.emit(5);
+  }
+
+  stepsToback() {
+    this.stepper.previous();
+    this.outputToParent.emit(-5);
+  }
+  skipTonext() {
+    this.stepper.next();
+    this.outputToParent.emit(5);
   }
 
 }

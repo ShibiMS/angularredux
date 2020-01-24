@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StepsService } from '../steps.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -12,6 +12,7 @@ import * as stepsData from '../../steps/state/steps.reducers';
 })
 export class HeightSelectionComponent implements OnInit {
   @Input()stepper: any;
+  @Output() outputToParent = new EventEmitter<number>();
   selectedValue: string;
   selectedValue1: string;
   heights: any = [
@@ -54,5 +55,13 @@ export class HeightSelectionComponent implements OnInit {
       console.log('height dispatch', this.heightForm.value);
       this.store.dispatch(new stepActions.HeightSelection(htstep));
       this.stepper.next();
+      this.outputToParent.emit(5);
   }
+
+  stepsToback() {
+    this.stepper.previous();
+    this.outputToParent.emit(-5);
+  }
+
+
 }

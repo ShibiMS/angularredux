@@ -1,5 +1,7 @@
 <div id="toolkitstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <span class="backSteps" (click)="stepsToback()">back</span>    
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">TOOLKIT
+        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>    
     </h3>
     <form [formGroup]="toolkitForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
         <mat-card class="steps-card" fxFlex="60" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
@@ -8,13 +10,13 @@
                 working out,etc)</mat-card-subtitle>
             <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
                 <span>no</span>
-                <mat-slide-toggle formControlName="commercialgymValue"></mat-slide-toggle><span>yes</span>
+                <mat-slide-toggle formControlName="commercialgymValue" [checked]="commercialChecked"></mat-slide-toggle><span>yes</span>
             </div>
             <mat-card-title>Do you like(or want to try) boutique studios?</mat-card-title>
             <mat-card-subtitle>(a smaller gym that might run yoga classes, pilates, spin, etc.)</mat-card-subtitle>
             <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
                 <span>no</span>
-                <mat-slide-toggle formControlName="boutiqueValue"></mat-slide-toggle><span>yes</span>
+                <mat-slide-toggle formControlName="boutiqueValue" [checked]="boutiqueChecked"></mat-slide-toggle><span>yes</span>
             </div>
             <mat-card-title>Do you have any of the following stuff at home?</mat-card-title>
             <mat-radio-group fxFlex="100" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20px"

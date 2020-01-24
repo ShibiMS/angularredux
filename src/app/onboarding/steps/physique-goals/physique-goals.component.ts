@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
@@ -12,6 +12,7 @@ import * as stepsData from '../../steps/state/steps.reducers';
 })
 export class PhysiqueGoalsComponent implements OnInit {
   @Input() stepper: any;
+  @Output()outputToParent = new EventEmitter<number>();
   physiqueForm: FormGroup;
   userId = localStorage.getItem('userid');
   constructor(
@@ -27,11 +28,16 @@ export class PhysiqueGoalsComponent implements OnInit {
     const physiquegoalData  = this.store.select(stepsData.getPhysiquegoal);
     console.log('physique goal', physiquegoalData);
     physiquegoalData.subscribe(currentCustomer => {
-      console.log('PGcurrentCustomer', currentCustomer);
       if (currentCustomer) {
+      console.log('PGcurrentCustomer', currentCustomer);
+      let physicalgoalData;
+      if (currentCustomer.physicalgoal) {
+        physicalgoalData = currentCustomer.physicalgoal.filter( item => item.status === true);
+        console.log('physical goal', physicalgoalData[0].id);
         this.physiqueForm.patchValue({
-          weightChoose: currentCustomer.id
+          physiquechoice: physicalgoalData[0].id.toString()
         });
+      }
       }
     });
   }
@@ -42,6 +48,10 @@ export class PhysiqueGoalsComponent implements OnInit {
     };
     this.store.dispatch(new stepActions.PhysiqueGoal(physicGoalstep));
     this.stepper.next();
+    this.outputToParent.emit(5);
   }
-
+  skipTonext() {
+    this.stepper.next();
+    this.outputToParent.emit(5);
+  }
 }

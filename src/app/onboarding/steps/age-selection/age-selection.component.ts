@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { StepsService } from '../steps.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -21,6 +21,7 @@ export class AgeSelectionComponent implements OnInit {
   userId = localStorage.getItem('userid');
   ageForm: any;
   @Input()stepper: any;
+  @Output() outputToParent = new EventEmitter<number>();
   constructor(
     private store: Store<any>,
     private agestepstepService: StepsService,
@@ -51,6 +52,10 @@ export class AgeSelectionComponent implements OnInit {
     this.store.dispatch(new stepActions.AgeSelection(agestep));
     // this.agestepstepService.step3AgeSubmit(agestep);
     this.stepper.next();
+    this.outputToParent.emit(5);
   }
-
+  stepsToback() {
+    this.stepper.previous();
+    this.outputToParent.emit(-5);
+  }
 }

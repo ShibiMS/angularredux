@@ -1,5 +1,6 @@
 <div id="ageselectionstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center"> 
-    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Age
+  <span class="backSteps" (click)="stepsToback()">back</span>    
+  <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Age
       <span class="stepTitlerequired">*required</span>
     </h3>
     <form [formGroup]="ageForm"  fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">

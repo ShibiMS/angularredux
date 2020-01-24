@@ -1,10 +1,11 @@
 <div id="genderselectstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <span class="backSteps" (click)="stepsToback()">back</span>
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Sex
         <span class="stepTitlerequired">*required</span>
     </h3>
     <form [formGroup]="genderForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">   
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">
-        <mat-card-title>Hi, [name].<br />Nice to meet you!</mat-card-title>
+        <mat-card-title>Hi, {{firstName}}.<br />Nice to meet you!</mat-card-title>
         <p>We want to tailor your experience to your body. Which is best for you?</p>
 
         <mat-radio-group formControlName="genderoptions" aria-label="Select an option" fxFlex="100" fxLayout="row wrap" fxLayoutGap="5%"

@@ -1,6 +1,6 @@
 <div id="pgselectionextrastep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">PHYSIQUE GOALS
-        <span class="stepTitlerequired">*required</span>
+        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>
     </h3>
     <form [formGroup]="physiqueForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="50" fxLayout="row wrap" fxLayoutAlign="center">

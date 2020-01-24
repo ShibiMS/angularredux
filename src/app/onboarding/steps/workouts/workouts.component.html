@@ -1,6 +1,7 @@
 <div id="workoutstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <span class="backSteps" (click)="stepsToback()">back</span>    
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">workouts
-        <span class="stepTitlerequired">Skip</span>
+        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>
     </h3>
     <form [formGroup]="workOutForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">

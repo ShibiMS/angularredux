@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { StepsService } from '../steps.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
@@ -13,9 +13,11 @@ import * as stepsData from '../../steps/state/steps.reducers';
   encapsulation: ViewEncapsulation.None
 })
 export class GenderSelectionComponent implements OnInit {
-  @Input()stepper: any;
+  @Input()  stepper: any;
+  @Output() outputToParent = new EventEmitter<number>();
   genderForm: any;
   userId = localStorage.getItem('userid');
+  firstName: any;
   constructor(
     private genderstepService: StepsService,
     private formBuilder: FormBuilder,
@@ -30,6 +32,7 @@ export class GenderSelectionComponent implements OnInit {
     console.log('gender', gender);
     gender.subscribe(currentCustomer => {
       if (currentCustomer) {
+        this.firstName = currentCustomer.firstName;
         this.genderForm.patchValue({
           genderoptions: currentCustomer.gender,
         });
@@ -45,6 +48,11 @@ export class GenderSelectionComponent implements OnInit {
     console.log('gender dispatch', this.genderForm.value);
     this.store.dispatch(new stepActions.GenderSelection(genderstep));
     this.stepper.next();
+    this.outputToParent.emit(5);
   }
+  stepsToback() {
+    this.stepper.previous();
+    this.outputToParent.emit(-5);
 
+  }
 }

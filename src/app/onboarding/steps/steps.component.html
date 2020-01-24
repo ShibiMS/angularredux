@@ -7,68 +7,67 @@
     </div>
     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="fybrstepsmatProgress">
         <mat-progress-bar fxFlex="85" fxLayout="row wrap" fxLayoutAlign="center" 
-        class="example-margin"        
-        [mode]="mode"
-        [value]="value" 
-        [bufferValue]="bufferValue">
+        class           =   "example-margin"        
+        [mode]          =   "mode"
+        [value]         =   "value" 
+        [bufferValue]   = "bufferValue">
         </mat-progress-bar>
     </div>
     <div class="stepsContent" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center">        
         <mat-horizontal-stepper #stepper>
             <mat-step>
-                <app-welcome [stepper]="stepper"></app-welcome>                
+                <app-welcome [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-welcome>                
             </mat-step>
             <mat-step>            
-                <app-gender-selection [stepper]="stepper"></app-gender-selection>
+                <app-gender-selection [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-gender-selection>
             </mat-step>
             <mat-step>
-                <app-age-selection [stepper]="stepper"></app-age-selection>
+                <app-age-selection [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-age-selection>
             </mat-step>
             <mat-step>
-                <app-height-selection [stepper]="stepper"></app-height-selection>
+                <app-height-selection [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-height-selection>
             </mat-step>
             <mat-step>
-                <app-weight-selection [stepper]="stepper"></app-weight-selection>
+                <app-weight-selection [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-weight-selection>
             </mat-step>
             <mat-step>
-                <app-basics-cover>                    
-                </app-basics-cover>
+                <app-basics-cover [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-basics-cover>
             </mat-step>
             <mat-step>
-                <app-progress-selection [stepper]="stepper"></app-progress-selection>
+                <app-progress-selection [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-progress-selection>
             </mat-step>
             <mat-step>
-                <app-photo-upload-section [stepper]="stepper"></app-photo-upload-section>
+                <app-photo-upload-section [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-photo-upload-section>
             </mat-step>
             <mat-step>
-                <app-body-measurement [stepper]="stepper"></app-body-measurement>
+                <app-body-measurement [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-body-measurement>
             </mat-step>
             <mat-step>
-                <app-weight-selection-extra [stepper]="stepper"></app-weight-selection-extra>
+                <app-weight-selection-extra [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-weight-selection-extra>
             </mat-step>
             <mat-step>
-                <app-physique-goals [stepper]="stepper"></app-physique-goals>
+                <app-physique-goals [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-physique-goals>
             </mat-step>
             <mat-step>
-                <app-activity-level [stepper]="stepper"></app-activity-level>
+                <app-activity-level [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-activity-level>
             </mat-step>
             <mat-step>
-                <app-workouts [stepper]="stepper"></app-workouts>
+                <app-workouts [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-workouts>
             </mat-step>
             <mat-step>
-                <app-fitness-goal [stepper]="stepper"></app-fitness-goal>
+                <app-fitness-goal [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-fitness-goal>
             </mat-step>
             <mat-step>
-                <app-toolkit [stepper]="stepper"></app-toolkit>
+                <app-toolkit [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-toolkit>
             </mat-step>
             <mat-step>
-                <app-activities></app-activities>
+                <app-activities [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-activities>
             </mat-step>
             <mat-step>
-                <app-yourfood></app-yourfood>
+                <app-yourfood (outputToParent)="GetOutputValue($event)"></app-yourfood>
             </mat-step>
             <mat-step>
-                <app-dietrestriction></app-dietrestriction>
+                <app-dietrestriction (outputToParent)="GetOutputValue($event)"></app-dietrestriction>
             </mat-step>
         </mat-horizontal-stepper>
     </div>

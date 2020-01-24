@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { Store, State, select } from '@ngrx/store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as stepActions from '../../steps/state/steps.actions';
@@ -15,6 +15,7 @@ import * as stepsData from '../../steps/state/steps.reducers';
 export class WelcomeComponent implements OnInit {
   welcomeForm: any;
   @Input()stepper: any;
+  @Output() outputToParent = new EventEmitter<number>();
   userId = localStorage.getItem('userid');
   constructor(
     private store: Store<any>,
@@ -46,7 +47,7 @@ export class WelcomeComponent implements OnInit {
     this.store.dispatch(new stepActions.WelcomeStep(welcomestep));
    // this.welcomestepService.step1WelcomeSubmit(welcomestep);
     this.stepper.next();
-
+    this.outputToParent.emit(5);
   }
 
 }

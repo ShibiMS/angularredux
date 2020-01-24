@@ -6,7 +6,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./steps.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class StepsComponent implements OnInit { 
+export class StepsComponent implements OnInit {
   mode = 'determinate';
   value = 5;
   bufferValue = 1;
@@ -15,4 +15,9 @@ export class StepsComponent implements OnInit {
   ngOnInit() {
   }
 
+  GetOutputValue(selected: number) {
+    console.log('selected', selected);
+    this.value = this.value + selected;
+    console.log('value+++', this.value);
+  }
 }

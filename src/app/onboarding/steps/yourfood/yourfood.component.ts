@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-yourfood',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class YourfoodComponent implements OnInit {
 
+  @Output()outputToParent = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  yourFoodSubmit() {
+    this.outputToParent.emit(5);
   }
 
 }

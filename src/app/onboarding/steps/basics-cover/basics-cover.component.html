@@ -1,6 +1,7 @@
 <div id="basicselectionstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center"> 
-    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-      <span class="stepTitlerequired"></span>
+  <span class="backSteps" (click)="stepsToback()">back</span>
+  <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+      <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>
     </h3>
     <mat-card class="steps-card" fxFlex="25" fxLayout="row wrap" fxLayoutAlign="center">        
       <mat-card-title>That covers the basics!</mat-card-title> 
@@ -9,7 +10,7 @@
     <!-- <app-fybrbuttons mat-button matStepperNext [buttonConfig]="loginBtnConfig" (loginBtnClickEmt)="onClickEventReceived($event)">
     </app-fybrbuttons>  -->
     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-      <button mat-button matStepperNext>TAILOR MY PLAN FURTHER</button>
+      <button mat-button matStepperNext (click)="basicCoversubmit()">TAILOR MY PLAN FURTHER</button>
       <p>take me to my plan</p>
     </div>
     </mat-card>

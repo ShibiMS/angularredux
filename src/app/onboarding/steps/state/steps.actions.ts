@@ -136,11 +136,19 @@ export enum StepActionTypes {
   STEP14_FitnessGoal_SUCCESS  = "FitnessGoal Success",
   STEP14_FitnessGoal_FAIL     = "FitnessGoal Fail",
 
+  STEP14_GET_FitnessGoal         = "GET FitnessGoal",
+  STEP14_GET_FitnessGoal_SUCCESS = "GET FitnessGoal Success",
+  STEP14_GET_FitnessGoal_FAIL    = "GET FitnessGoal Fail",
+  
   /*****Step 15******/
   
   STEP15_ToolKit          = "ToolKit",
   STEP15_ToolKit_SUCCESS  = "ToolKit Success",
   STEP15_ToolKit_FAIL     = "ToolKit Fail",
+
+  STEP15_GET_ToolKit          = "Get ToolKit",
+  STEP15_GET_ToolKit_SUCCESS  = "Get ToolKit Success",
+  STEP15_GET_ToolKit_FAIL     = "Get ToolKit Fail",
  }
 export class WelcomeStep implements Action {  
   readonly type = StepActionTypes.STEP1_WELCOME;
@@ -504,6 +512,19 @@ export class FitnessGoalFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetFitnessGoal implements Action {
+  readonly type = StepActionTypes.STEP14_GET_FitnessGoal;  
+  constructor(public payload: any) {}
+}
+export class GetFitnessGoalSuccess implements Action {
+  readonly type = StepActionTypes.STEP14_GET_FitnessGoal_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetFitnessGoalFail implements Action {
+  readonly type = StepActionTypes.STEP14_GET_FitnessGoal_FAIL;
+  constructor(public payload: any) {}
+}
+
 /*** STEP 15****/ 
 
 export class ToolKit implements Action {
@@ -516,6 +537,19 @@ export class ToolKitSuccess implements Action {
 }
 export class ToolKitFail implements Action {
   readonly type = StepActionTypes.STEP15_ToolKit_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class GetToolKit implements Action {
+  readonly type = StepActionTypes.STEP15_GET_ToolKit;  
+  constructor(public payload: any) {}
+}
+export class GetToolKitSuccess implements Action {
+  readonly type = StepActionTypes.STEP15_GET_ToolKit_SUCCESS;
+  constructor(public payload: any) {}
+}
+export class GetToolKitFail implements Action {
+  readonly type = StepActionTypes.STEP15_GET_ToolKit_FAIL;
   constructor(public payload: any) {}
 }
 
@@ -595,9 +629,15 @@ export type Action =
 | FitnessGoal
 | FitnessGoalSuccess
 | FitnessGoalFail
+| GetFitnessGoal
+| GetFitnessGoalSuccess
+| GetFitnessGoalFail
 | ToolKit
 | ToolKitSuccess
 | ToolKitFail
+| GetToolKit
+| GetToolKitSuccess
+| GetToolKitFail
 ;
   
  

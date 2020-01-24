@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as stepActions from '../../steps/state/steps.actions';
@@ -12,6 +12,7 @@ import * as stepsData from '../../steps/state/steps.reducers';
 })
 export class WeightSelectionExtraComponent implements OnInit {
   @Input()stepper: any;
+  @Output()outputToParent = new EventEmitter<number>();
   weightSelectionForm: FormGroup;
   bodyType: any;
   userId = localStorage.getItem('userid');
@@ -28,10 +29,10 @@ export class WeightSelectionExtraComponent implements OnInit {
     const WeightExtraData  = this.store.select(stepsData.getWeightExtra);
     console.log('weightSelectionForm', WeightExtraData);
     WeightExtraData.subscribe(currentCustomer => {
-      console.log('currentCustomer', currentCustomer);
+      console.log('weightExtra', currentCustomer.weightExtra);
       if (currentCustomer) {
         this.weightSelectionForm.patchValue({
-          weightChoose: currentCustomer.id
+          weightChoose: currentCustomer.weightExtra.toString()
         });
       }
     });
@@ -54,6 +55,7 @@ export class WeightSelectionExtraComponent implements OnInit {
 
     this.store.dispatch(new stepActions.WeightExtra(weightSelection));
     this.stepper.next();
+    this.outputToParent.emit(5);
   }
 
 }

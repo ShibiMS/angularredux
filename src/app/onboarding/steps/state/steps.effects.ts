@@ -728,6 +728,29 @@ fitnessGoalFailure$: Observable<Action> = this.actions$.pipe(
 );
 
 
+@Effect()
+getfitnessGoalStep$ = this.actions$.pipe(ofType<stepActions.GetFitnessGoal>(
+  stepActions.StepActionTypes.STEP14_GET_FitnessGoal),
+  map((action: stepActions.GetFitnessGoal) => {
+   console.log('Get Fitness Goal action', action.payload);
+   return action.payload;
+  }),
+  switchMap((FitnessGoalLevel: any) =>
+    this.stepService.step14_GET_FitnessGoalLevel(FitnessGoalLevel).pipe(
+      map(
+        (FitnessGoalLevelData: any) => {
+          console.log('FitnessGoalLevelData', FitnessGoalLevelData);
+          return new stepActions.GetFitnessGoalSuccess(FitnessGoalLevelData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetFitnessGoalFail(err));
+    })
+    )
+  )
+);
+
 /****STEP 15*****/
 
 @Effect({ dispatch: false })
@@ -764,6 +787,28 @@ toolKitFailure$: Observable<Action> = this.actions$.pipe(
     ofType<stepActions.ToolKitFail>(stepActions.StepActionTypes.STEP15_ToolKit_FAIL)
 );
 
+@Effect()
+gettoolKitStep$ = this.actions$.pipe(ofType<stepActions.GetToolKit>(
+  stepActions.StepActionTypes.STEP15_GET_ToolKit),
+  map((action: stepActions.GetToolKit) => {
+   console.log('Get toolkit action', action.payload);
+   return action.payload;
+  }),
+  switchMap((toolkit: any) =>
+    this.stepService.step15_GET_ToolKitSubmit(toolkit).pipe(
+      map(
+        (toolkitData: any) => {
+          console.log('toolkitLevelData', toolkitData);
+          return new stepActions.GetToolKitSuccess(toolkitData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetToolKitFail(err));
+    })
+    )
+  )
+);
   constructor(
     private actions$: Actions,
     private stepService: StepsService,

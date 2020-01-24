@@ -13,9 +13,11 @@ const initialState = {
                         bodyMeasurementBy: '',
                         Measure: {},
                         weightExtra: {},
-                        physicalgoal: {},
+                        physicalgoal: '',
                         activitylevel: '',
                         workoutPerWeek: '',
+                        fitnessGoal: '',
+                        toolkit: '',
                         errorMessage:   ''
                     };
 export function stepReducer(state = initialState, action: stepActions.Action) {
@@ -210,7 +212,7 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
         console.log('GET WEIGHT SUCCESS', action.payload);
         return {
             ...state,
-            weightExtra: action.payload.data,
+            weightExtra: action.payload.data.bodyType.id,
             errorMessage: null
         };
     }
@@ -270,6 +272,38 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
             errorMessage: 'Error Occured'
         };
     }
+    case stepActions.StepActionTypes.STEP14_GET_FitnessGoal_SUCCESS: {
+        console.log('GET fitness goal SUCCESS', action.payload);
+        return {
+            ...state,
+            fitnessGoal: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP14_GET_FitnessGoal_FAIL: {
+        console.log('GET Fitness goal FAILURE', action.payload);
+        return {
+            ...state,
+            fitnessGoal: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.STEP15_GET_ToolKit_SUCCESS: {
+        console.log('GET toolkit SUCCESS', action.payload);
+        return {
+            ...state,
+            toolkit: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.STEP15_GET_ToolKit_FAIL: {
+        console.log('GET toolkit FAILURE', action.payload);
+        return {
+            ...state,
+            toolkit: '',
+            errorMessage: 'Error Occured'
+        };
+    }
     default: {
         return state;
     }
@@ -322,6 +356,14 @@ export const getactivitylevel = createSelector(
     (state: any) => state
 );
 export const getworkoutData = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getFitnessgoalData = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getToolkitData = createSelector(
     getOnboardingFeatureState,
     (state: any) => state
 );

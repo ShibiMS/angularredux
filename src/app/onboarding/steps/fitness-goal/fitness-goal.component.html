@@ -1,6 +1,7 @@
 <div id="fitnessgoalstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+    <span class="backSteps" (click)="stepsToback()">back</span>    
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">FITNESS GOALS
-        <span class="stepTitlerequired">Skip</span>
+        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>
     </h3>
     <form [formGroup]="fitnessGoalForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card class="steps-card" fxFlex="25" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
@@ -35,6 +36,20 @@
                     <p>get stronger</p>
                 </mat-card>
             </label>
+            <label fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-radio-button value="3" #fitnessgoal3></mat-radio-button>
+                    <mat-card fxFlex="100" fxLayout="row wrap">
+                        <span *ngIf="fitnessgoal3.checked else fitnessgoal3notchecked">
+                        <img mat-card-avatar src="../../../../assets/flexibility-selected.svg">
+                       </span>
+                       <ng-template #fitnessgoal3notchecked>
+                           <span>
+                               <img mat-card-avatar src="../../../../assets/flexibility.svg">
+                           </span>
+                       </ng-template>
+                        <p>get Flexibility</p>
+                    </mat-card>
+                </label>
         </mat-radio-group>
 
         <p>

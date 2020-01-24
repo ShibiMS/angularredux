@@ -276,7 +276,7 @@ step10_GetWeightExtraSubmit(payload: any) {
     headers: this.headersobject
   };
   // tslint:disable-next-line: max-line-length
-  return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step10?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/getOnBoardingSummary?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
 }
 step11_PhysiqueGoalSubmit(payload: any) {
   console.log('step11 service', payload);
@@ -357,6 +357,14 @@ step14_FitnessGoalLevel(payload: any) {
   return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step14`,
    postData, this.httpOptions);
 }
+step14_GET_FitnessGoalLevel(payload: any) {
+  console.log('get Fitness goal', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step14?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+}
 step15_ToolKitSubmit(payload: any){
   console.log('ToolKitSubmit service', payload);
   this.httpOptions = {
@@ -371,6 +379,16 @@ step15_ToolKitSubmit(payload: any){
   };
   return this.http.post<any>(this.apibaseUrl + `/onboarding/remotePostOnboardingData/step15`,
    postData, this.httpOptions);
+}
+
+step15_GET_ToolKitSubmit(payload: any) {
+  console.log('get toolkit service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step15?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+
 }
 
 }
