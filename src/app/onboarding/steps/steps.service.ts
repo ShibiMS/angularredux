@@ -388,8 +388,89 @@ step15_GET_ToolKitSubmit(payload: any) {
   };
   // tslint:disable-next-line: max-line-length
   return this.http.get<any>(this.apibaseUrl + `/onboarding/remoteGetOnboardingData/step15?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
-
 }
+
+step16_GET_Activities(payload: any) {
+  console.log('get Activities service', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/getworkoutTypes?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+}
+Step16_POSTActivities(payload: any) {
+console.log('post activities', payload);
+let postData;
+this.httpOptions = {
+  headers: this.headersobject
+};
+postData = {};
+postData.data = payload;
+postData.userId = Number(this.userId);
+postData.accessToken = this.accessToken;
+console.log('postData payload', postData);
+  // tslint:disable-next-line: max-line-length
+return this.http.post<any>(this.apibaseUrl + `/onboarding/saveWorkout?userId=${this.userId}&accessToken=${this.accessToken}`, postData, this.httpOptions);
+}
+
+step17_GET_ActiveReceipe(payload: any) {
+  console.log('get Activie receipe', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  // tslint:disable-next-line: max-line-length
+  return this.http.get<any>(this.apibaseUrl + `/onboarding/getActiveRecipe?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+}
+
+Step17_POST_ActiveReceipe(payload: any) {
+  console.log('post Active Receipe', payload);
+  this.httpOptions = {
+    headers: this.headersobject
+  };
+  const postData = {
+    userId       : Number(this.userId),
+    accessToken  : this.accessToken,
+    foodLike     : payload.foodLike
+  };
+
+  console.log('postData payload', postData);
+    // tslint:disable-next-line: max-line-length
+  return this.http.post<any>(this.apibaseUrl + `/onboarding/updatecreatorRecipe?userId=${this.userId}&accessToken=${this.accessToken}`, postData, this.httpOptions);
+  }
+
+  step18_GET_DietRestiction(payload: any) {
+    console.log('get Diet Restiction', payload);
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/getDietRestriction?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  }
+
+  step18_GET_DietFood(payload: any) {
+    console.log('get Diet Food', payload);
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(this.apibaseUrl + `/onboarding/getDietFood?userId=${this.userId}&accessToken=${this.accessToken}`, this.httpOptions);
+  }
+
+  Step18_POST_DietaryFood(payload: any) {
+    console.log('post Dietary', payload);
+    this.httpOptions = {
+      headers: this.headersobject
+    };
+    const postData = {
+      userId       : Number(this.userId),
+      accessToken  : this.accessToken,
+      data         : payload
+    };
+
+    console.log('postData payload', postData);
+      // tslint:disable-next-line: max-line-length
+    return this.http.post<any>(this.apibaseUrl + `/onboarding/saveDietaryFood?userId=${this.userId}&accessToken=${this.accessToken}`, postData, this.httpOptions);
+    }
 
 }
 

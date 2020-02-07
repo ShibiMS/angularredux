@@ -809,6 +809,250 @@ gettoolKitStep$ = this.actions$.pipe(ofType<stepActions.GetToolKit>(
     )
   )
 );
+
+
+@Effect()
+ActivitiesStep$ = this.actions$.pipe(ofType<stepActions.GetActivities>(
+  stepActions.StepActionTypes.Step16_GetActivities),
+  map((action: stepActions.GetActivities) => {
+   console.log('Get Activities', action.payload);
+   return action.payload;
+  }),
+  switchMap((toolkit: any) =>
+    this.stepService.step16_GET_Activities(toolkit).pipe(
+      map(
+        (activitiesData: any) => {
+          console.log('activities Data', activitiesData);
+          return new stepActions.GetActivitiesSuccess(activitiesData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetActivitiesFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+getActivitiessuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetActivitiesSuccess>(stepActions.StepActionTypes.Step16_GetActivities_Success),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+getactivitiesFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetActivitiesFail>(stepActions.StepActionTypes.Step16_GetActivities_Fail)
+);
+
+
+@Effect()
+postActivitiesStep$ = this.actions$.pipe(ofType<stepActions.PostActivities>(
+  stepActions.StepActionTypes.step16_postActivities),
+  map((action: stepActions.PostActivities) => {
+   console.log('post Activities', action.payload);
+   return action.payload;
+  }),
+  switchMap((postActivityData: any) =>
+    this.stepService.Step16_POSTActivities(postActivityData).pipe(
+      map(
+        (activitiesData: any) => {
+          console.log('activities Data', activitiesData);
+          return new stepActions.PostActivitySuccess(activitiesData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.PostActivityFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+postActivitiessuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.PostActivitySuccess>(stepActions.StepActionTypes.step16_postActivities_Success),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+postactivitiesFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetActivitiesFail>(stepActions.StepActionTypes.step16_postActivities_Fail)
+);
+
+@Effect()
+getActiveReceipe$ = this.actions$.pipe(ofType<stepActions.GetActiveRecipe>(
+  stepActions.StepActionTypes.Step17_GetActivieReceipe),
+  map((action: stepActions.GetActiveRecipe) => {
+   console.log('Get Activie Recipe', action.payload);
+   return action.payload;
+  }),
+  switchMap((receipe: any) =>
+    this.stepService.step17_GET_ActiveReceipe(receipe).pipe(
+      map(
+        (activeRecipeData: any) => {
+          console.log('activeRecipe Data', activeRecipeData);
+          return new stepActions.GetActiveRecipeSuccess(activeRecipeData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.GetActiveRecipeFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+getActiveReceipesuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetActiveRecipeSuccess>(stepActions.StepActionTypes.Step17_GetActivieReceipe_Success),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+getactiveReceipeFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetActiveRecipeFail>(stepActions.StepActionTypes.Step17_GetActivieReceipe_Fail)
+);
+
+
+@Effect()
+postActiveReceipe$ = this.actions$.pipe(ofType<stepActions.PostActiveRecipe>(
+  stepActions.StepActionTypes.Step17_PostActivieReceipe),
+  map((action: stepActions.PostActiveRecipe) => {
+   console.log('Post Activie Recipe', action.payload);
+   return action.payload;
+  }),
+  switchMap((receipe: any) =>
+    this.stepService.Step17_POST_ActiveReceipe(receipe).pipe(
+      map(
+        (activeRecipeData: any) => {
+          console.log('activeRecipe Data', activeRecipeData);
+          return new stepActions.PostActiveRecipeSuccess(activeRecipeData);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.PostActiveRecipeFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+postActiveReceipesuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.PostActiveRecipeSuccess>(stepActions.StepActionTypes.Step17_PostActivieReceipe_Success),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+postactiveReceipeFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.PostActiveRecipeFail>(stepActions.StepActionTypes.Step17_PostActivieReceipe_Fail)
+);
+
+
+// Step 18 //
+
+@Effect()
+getDietRestictions$ = this.actions$.pipe(ofType<stepActions.GetDietRestrictions>(
+  stepActions.StepActionTypes.Step18_GetDietRestrictions),
+  map((action: stepActions.GetDietRestrictions) => {
+   console.log('Get Diet Restrictions', action.payload);
+   return action.payload;
+  }),
+  switchMap((receipe: any) =>
+    this.stepService.step18_GET_DietRestiction(receipe).pipe(
+      map(
+        (dietRestiction: any) => {
+          return new stepActions.GetDietRestrictionsSuccess(dietRestiction);
+        }
+    ),
+    catchError(err => {
+      return of(new stepActions.GetDietRestrictionsFail(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+getDietRestrictionSuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetDietRestrictionsSuccess>(stepActions.StepActionTypes.Step18_GetDietRestrictionSuccess),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+getDietRestrictionFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetDietRestrictionsFail>(stepActions.StepActionTypes.Step18_GetDietRestictionFail)
+);
+
+
+@Effect()
+getDietFoods$ = this.actions$.pipe(ofType<stepActions.GetDietFood>(
+  stepActions.StepActionTypes.Step18_GetDietFood),
+  map((action: stepActions.GetDietFood) => {
+   console.log('Get Diet Food', action.payload);
+   return action.payload;
+  }),
+  switchMap((receipe: any) =>
+    this.stepService.step18_GET_DietFood(receipe).pipe(
+      map(
+        (dietRestiction: any) => {
+          return new stepActions.GetDietFoodSuccess(dietRestiction);
+        }
+    ),
+    catchError(err => {
+      return of(new stepActions.GetDietFoodFailure(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+getDietFoodSuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetDietFoodSuccess>(stepActions.StepActionTypes.Step18_GetDietFoodSuccess),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+getDietFoodFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.GetDietFoodFailure>(stepActions.StepActionTypes.step18_GetDietFoodFailure)
+);
+
+
+@Effect()
+postDietRestictFood$ = this.actions$.pipe(ofType<stepActions.PostDietaryFood>(
+  stepActions.StepActionTypes.Step18_PostDietaryFood),
+  map((action: stepActions.PostDietaryFood) => {
+   console.log('PostDietaryFood', action.payload);
+   return action.payload;
+  }),
+  switchMap((receipe: any) =>
+    this.stepService.Step18_POST_DietaryFood(receipe).pipe(
+      map(
+        (POSTdIET: any) => {
+          console.log('POSTdIET: Data', POSTdIET);
+          return new stepActions.PostDietaryFoodSuccess(POSTdIET);
+        }
+    ),
+    catchError(err => {
+      console.log(err);
+      return of(new stepActions.PostDietaryFoodFailure(err));
+    })
+    )
+  )
+);
+
+@Effect({ dispatch: false })
+postDietRestictFoodsuccess$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.PostDietaryFoodSuccess>(stepActions.StepActionTypes.Step18_PostDietaryFoodSuccess),
+    tap((user: any) => {})
+);
+
+@Effect({ dispatch: false })
+postDietRestictFoodFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<stepActions.PostDietaryFoodFailure>(stepActions.StepActionTypes.Step18_PostDietaryFoodFailure)
+);
+
+
   constructor(
     private actions$: Actions,
     private stepService: StepsService,

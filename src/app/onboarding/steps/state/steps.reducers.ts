@@ -16,8 +16,12 @@ const initialState = {
                         physicalgoal: '',
                         activitylevel: '',
                         workoutPerWeek: '',
+                        getActivities: '',
+                        getActiveReceipe: '',
                         fitnessGoal: '',
                         toolkit: '',
+                        getDietRestriction: '',
+                        getDietFood: '',
                         errorMessage:   ''
                     };
 export function stepReducer(state = initialState, action: stepActions.Action) {
@@ -304,6 +308,70 @@ export function stepReducer(state = initialState, action: stepActions.Action) {
             errorMessage: 'Error Occured'
         };
     }
+    case stepActions.StepActionTypes.Step16_GetActivities_Success: {
+        console.log('GET Activities SUCCESS', action.payload);
+        return {
+            ...state,
+            getActivities: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.Step16_GetActivities_Fail: {
+        console.log('GET Activities FAILURE', action.payload);
+        return {
+            ...state,
+            getActivities: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.Step17_GetActivieReceipe_Success: {
+        console.log('GET Activities SUCCESS', action.payload);
+        return {
+            ...state,
+            getActiveReceipe: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.Step17_GetActivieReceipe_Fail: {
+        console.log('GET Activities FAILURE', action.payload);
+        return {
+            ...state,
+            getActiveReceipe: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.Step18_GetDietRestrictionSuccess: {
+        console.log('Get Diet Restriction SUCCESS', action.payload);
+        return {
+            ...state,
+            getDietRestriction: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.Step18_GetDietRestictionFail: {
+        console.log('GET Diet Restiction FAILURE', action.payload);
+        return {
+            ...state,
+            getDietRestriction: '',
+            errorMessage: 'Error Occured'
+        };
+    }
+    case stepActions.StepActionTypes.Step18_GetDietFoodSuccess: {
+        console.log('Get Diet Food SUCCESS', action.payload);
+        return {
+            ...state,
+            getDietFood: action.payload.data,
+            errorMessage: null
+        };
+    }
+    case stepActions.StepActionTypes.step18_GetDietFoodFailure: {
+        console.log('GET Diet Food FAILURE', action.payload);
+        return {
+            ...state,
+            getDietFood: '',
+            errorMessage: 'Error Occured'
+        };
+    }
     default: {
         return state;
     }
@@ -364,6 +432,22 @@ export const getFitnessgoalData = createSelector(
     (state: any) => state
 );
 export const getToolkitData = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getActivitiesData = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getActiveRecipe = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getDietRestriction = createSelector(
+    getOnboardingFeatureState,
+    (state: any) => state
+);
+export const getDietFood = createSelector(
     getOnboardingFeatureState,
     (state: any) => state
 );

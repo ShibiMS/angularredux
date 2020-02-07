@@ -149,6 +149,43 @@ export enum StepActionTypes {
   STEP15_GET_ToolKit          = "Get ToolKit",
   STEP15_GET_ToolKit_SUCCESS  = "Get ToolKit Success",
   STEP15_GET_ToolKit_FAIL     = "Get ToolKit Fail",
+
+  /*******Get Activities Step 16********/
+
+  Step16_GetActivities         = "Get Activities",
+  Step16_GetActivities_Success = "Get Activities Success",
+  Step16_GetActivities_Fail    = "Get Activities Fail",
+
+  /******Post Activities Step 16 *********/
+
+  step16_postActivities           = "Post Activities",
+  step16_postActivities_Success   = "Post Activities Success",
+  step16_postActivities_Fail      = "Post Activities Fail",
+
+  /******* Get ActivieReceipe Step 17 ********/
+
+  Step17_GetActivieReceipe         = "Get Active Receipe",
+  Step17_GetActivieReceipe_Success = "Get Active Receipe Success",
+  Step17_GetActivieReceipe_Fail    = "Get Active Receipe Fail",
+
+  Step17_PostActivieReceipe         = "Post Active Receipe",
+  Step17_PostActivieReceipe_Success = "Post Active Receipe Success",
+  Step17_PostActivieReceipe_Fail    = "Post Active Receipe Fail",
+
+  // ***** GeT Dietary Restrictions ****** //
+
+
+  Step18_GetDietRestrictions        = "Get Diet Restictions",
+  Step18_GetDietRestrictionSuccess  = "Get Diet Restiction Success",
+  Step18_GetDietRestictionFail      = "Get Diet Restiction Fail",
+
+  Step18_GetDietFood                = "Get Diet Food",
+  Step18_GetDietFoodSuccess         = "Get Diet Food Success",
+  step18_GetDietFoodFailure         = "Get Diet Food Failure",
+
+  Step18_PostDietaryFood            = "Post Dietary Food",
+  Step18_PostDietaryFoodSuccess     = "Post Dietary Food Success",
+  Step18_PostDietaryFoodFailure     = "Post Dietary Food Failure"
  }
 export class WelcomeStep implements Action {  
   readonly type = StepActionTypes.STEP1_WELCOME;
@@ -553,6 +590,104 @@ export class GetToolKitFail implements Action {
   constructor(public payload: any) {}
 }
 
+/**** Step 16 ******/
+
+export class GetActivities implements Action {
+  readonly type = StepActionTypes.Step16_GetActivities;  
+  constructor(public payload: any) {}
+}
+export class GetActivitiesSuccess implements Action {
+  readonly type = StepActionTypes.Step16_GetActivities_Success;
+  constructor(public payload: any) {}
+}
+export class GetActivitiesFail implements Action {
+  readonly type = StepActionTypes.Step16_GetActivities_Fail;
+  constructor(public payload: any) {}
+}
+
+
+export class PostActivities implements Action {
+  readonly type = StepActionTypes.step16_postActivities;  
+  constructor(public payload: any) {}
+}
+export class PostActivitySuccess implements Action {
+  readonly type = StepActionTypes.step16_postActivities_Success;
+  constructor(public payload: any) {}
+}
+export class PostActivityFail implements Action {
+  readonly type = StepActionTypes.step16_postActivities_Fail;
+  constructor(public payload: any) {}
+}
+
+/**** Step17 *****/
+
+export class GetActiveRecipe implements Action {
+  readonly type = StepActionTypes.Step17_GetActivieReceipe;  
+  constructor(public payload: any) {}
+}
+export class GetActiveRecipeSuccess implements Action {
+  readonly type = StepActionTypes.Step17_GetActivieReceipe_Success;
+  constructor(public payload: any) {}
+}
+export class GetActiveRecipeFail implements Action {
+  readonly type = StepActionTypes.Step17_GetActivieReceipe_Fail;
+  constructor(public payload: any) {}
+}
+
+export class PostActiveRecipe implements Action {
+  readonly type = StepActionTypes.Step17_PostActivieReceipe;  
+  constructor(public payload: any) {}
+}
+export class PostActiveRecipeSuccess implements Action {
+  readonly type = StepActionTypes.Step17_PostActivieReceipe_Success;
+  constructor(public payload: any) {}
+}
+export class PostActiveRecipeFail implements Action {
+  readonly type = StepActionTypes.Step17_PostActivieReceipe_Fail;
+  constructor(public payload: any) {}
+}
+
+// Step 18 \\\
+
+export class GetDietRestrictions implements Action {
+  readonly type = StepActionTypes.Step18_GetDietRestrictions;  
+  constructor(public payload: any) {}
+}
+export class GetDietRestrictionsSuccess implements Action {
+  readonly type = StepActionTypes.Step18_GetDietRestrictionSuccess;
+  constructor(public payload: any) {}
+}
+export class GetDietRestrictionsFail implements Action {
+  readonly type = StepActionTypes.Step18_GetDietRestictionFail;
+  constructor(public payload: any) {}
+}
+
+export class GetDietFood implements Action {
+  readonly type = StepActionTypes.Step18_GetDietFood;  
+  constructor(public payload: any) {}
+}
+export class GetDietFoodSuccess implements Action {
+  readonly type = StepActionTypes.Step18_GetDietFoodSuccess;
+  constructor(public payload: any) {}
+}
+export class GetDietFoodFailure implements Action {
+  readonly type = StepActionTypes.step18_GetDietFoodFailure;
+  constructor(public payload: any) {}
+}
+
+export class PostDietaryFood implements Action {
+  readonly type = StepActionTypes.Step18_PostDietaryFood;  
+  constructor(public payload: any) {}
+}
+export class PostDietaryFoodSuccess implements Action {
+  readonly type = StepActionTypes.Step18_PostDietaryFoodSuccess;
+  constructor(public payload: any) {}
+}
+export class PostDietaryFoodFailure implements Action {
+  readonly type = StepActionTypes.Step18_PostDietaryFoodFailure;
+  constructor(public payload: any) {}
+}
+
 export type Action = 
 | WelcomeStep
 | WelcomeStepSuccess
@@ -638,6 +773,27 @@ export type Action =
 | GetToolKit
 | GetToolKitSuccess
 | GetToolKitFail
+| GetActivities
+| GetActivitiesSuccess
+| GetActivitiesFail
+| PostActivities
+| PostActivitySuccess
+| PostActivityFail
+| GetActiveRecipe
+| GetActiveRecipeSuccess
+| GetActiveRecipeFail
+| PostActiveRecipe
+| PostActiveRecipeSuccess
+| PostActiveRecipeFail
+| GetDietRestrictions
+| GetDietRestrictionsSuccess
+| GetDietRestrictionsFail
+| GetDietFood
+| GetDietFoodSuccess
+| GetDietFoodFailure
+| PostDietaryFood
+| PostDietaryFoodSuccess
+| PostDietaryFoodFailure
 ;
   
  

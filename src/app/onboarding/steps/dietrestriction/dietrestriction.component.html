@@ -1,9 +1,66 @@
 <div id="dietrestrictstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Your Food
+    <span class="backSteps" (click)="stepsToback()">back</span> 
+    <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">YOUR FOOD
+        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>
     </h3>
-    <mat-card class="steps-card" fxFlex="45" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
-        <mat-card-title>Do you have any dietary restrictions?</mat-card-title>                
+    <mat-card class="steps-card" fxFlex="70" fxLayout="row wrap" fxLayoutAlign="center">
+        <mat-card-title  fxFlex="100">Do you have any dietary <br>restrictions?</mat-card-title>                
+        <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="dietRestriction" fxLayoutGap="2%">
+           <div fxFlex="20" fxLayout="row wrap" fxLayoutAlign="center" class="dietRestrictionitem" *ngFor="let dietrestrict of dietRestriction; let i = index;">
+            <label fxFlex="100">   
+                <mat-card fxFlex="100" [ngClass]="{'classchecked': dietrestrict.selected}">             
+                <mat-checkbox [(ngModel)]="dietrestrict.selected" #check (change)="DietrestrictChecked(dietrestrict,$event,i)">
+                    <span *ngIf="check.checked else notcheck">
+                        <img src="../../../../assets/{{dietrestrict.UnselectedIcon}}">
+                    </span>             
+                    <ng-template #notcheck> 
+                        <span *ngIf="dietrestrict.selected">
+                            <img src="../../../../assets/{{dietrestrict.UnselectedIcon}}">
+                        </span>   
+                        <span *ngIf="!dietrestrict.selected">
+                            <img src="../../../../assets/{{dietrestrict.SelectedIcon}}">
+                        </span>            
+                    </ng-template>
+                    {{dietrestrict.name}}
+                </mat-checkbox>
+            </mat-card> 
+            </label>  
+           </div>
+           <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+            <p fxFlex="0 0 auto" class="helpicon">
+                <mat-icon>help_outline</mat-icon>Why no Keto?
+            </p>
+            <h2 fxFlex="100">
+                Any foods to avoid?
+            </h2>
+            <div fxFlex="100" fxLayout="row wrap" class="dietRestrictionitem" *ngFor="let dietfood of grouppedDietArrayArray | keyvalue; let i = index;">
+            <div fxFlex="100" fxLayout="row wrap" class="dietfooditems" fxLayoutAlign="center" fxLayoutGap="2%">
+                <div fxFlex="18" fxLayout="row wrap" fxLayoutAlign="center" *ngFor="let itemFood of dietfood.value ; let j=index">
+                    <label fxFlex="100" fxLayout="row wrap" class="checkbox{{itemFood.DietaryRestrictionId}}">   
+                        <mat-card fxLayout="row wrap" fxLayoutAlign="center"  fxFlex="100" [ngClass]="{'classchecked': itemFood?.selectFoodcondition && itemFood?.selectFood }">         
+                            <mat-checkbox [(ngModel)]="itemFood.selectFood" [disabled]="!disableState[i]" #checkfood (change)="restrictFooditem(itemFood, $event)">
+                            <span *ngIf="checkfood.checked else notcheck">
+                                <img src="../../../../assets/{{itemFood.UnselectedIcon}}">
+                            </span>             
+                            <ng-template #notcheck> 
+                                <span *ngIf="itemFood?.selectFood">
+                                    <img src="../../../../assets/{{itemFood.UnselectedIcon}}">
+                                </span>    
+                                <span *ngIf="!itemFood?.selectFood">
+                                    <img src="../../../../assets/{{itemFood.SelectedIcon}}">
+                                </span>  
+                                    
+                            </ng-template>
+                            {{itemFood.DietaryRestrictionFoodName}}
+                        </mat-checkbox>
+                    </mat-card> 
+                    </label>  
+                </div>
+               </div>
+               </div>
+           </div>
+        </div>       
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext (click)="dietrestrictSubmit()">NEXT</button>
+            <button mat-button (click)="dietrestrictSubmit()">FINISH</button>
         </div>
     </mat-card>

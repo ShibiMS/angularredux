@@ -1,7 +1,7 @@
 <div id="fybr-onboard-steps" fxLayout="row wrap" fxFlex="100">
-    <div fxFlex="100" fxLayout="row wrap" class="stepbgimage">
+    <!-- <div fxFlex="100" fxLayout="row wrap" class="stepbgimage">
         <img src="../../../assets/bgfybr.png">
-    </div>
+    </div> -->
     <div fxFlex="100" fxLayout="row wrap" class="logotop">
         <img src="../../../assets/fybrwhite.png">
     </div>
@@ -14,7 +14,10 @@
         </mat-progress-bar>
     </div>
     <div class="stepsContent" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="center">        
-        <mat-horizontal-stepper #stepper>
+        <mat-horizontal-stepper #stepper>            
+            <mat-step>
+                <app-dietrestriction [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-dietrestriction>
+            </mat-step>
             <mat-step>
                 <app-welcome [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-welcome>                
             </mat-step>
@@ -64,10 +67,10 @@
                 <app-activities [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-activities>
             </mat-step>
             <mat-step>
-                <app-yourfood (outputToParent)="GetOutputValue($event)"></app-yourfood>
+              <app-yourfood [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-yourfood>
             </mat-step>
             <mat-step>
-                <app-dietrestriction (outputToParent)="GetOutputValue($event)"></app-dietrestriction>
+                <app-dietrestriction [stepper]="stepper" (outputToParent)="GetOutputValue($event)"></app-dietrestriction>
             </mat-step>
         </mat-horizontal-stepper>
     </div>

@@ -1,7 +1,7 @@
 <div id="activitiesstep" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-  <span class="backSteps" (click)="stepsToback()">back</span>
+    <span class="backSteps" (click)="stepsToback()">back</span>
     <h3 class="stepTitle" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">Activities
-        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>    
+        <span class="stepTitlerequired" (click)="skipTonext()">Skip</span>
     </h3>
     <mat-card class="steps-card" fxFlex="45" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
         <mat-card-title>Let's make this more "you".</mat-card-title>
@@ -27,57 +27,67 @@
                 <p>not interested</p>
             </div>
         </div>
+        <form [formGroup]="activitiesForm" fxFlex="100" fxLayout="row wrap" >
         <div fxFlex="100" fxLayout="row wrap" class="activitiesstrength">
-            <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
-                <p fxFlex="100">Strength</p>
-            </div>
-            <div fxFlex="100" fxLayoutGap="2%" fxLayout="row wrap">            
-            <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
-                <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
-                    <p fxFlex="45" fxLayout="row wrap">body weight</p>
-                    <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
-                    <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
-                        <span *ngIf="bw1.checked else bw1notcheck">
-                            <img src="../../../../assets/tick.svg">                        
-                        </span>
-                        <ng-template #bw1notcheck>
-                            <span>
-                                <img src="../../../../assets/tick copy.svg">
-                            </span>
-                        </ng-template>
-                    </label>
-                    <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
-                        <span *ngIf="bw2.checked else bw2notcheck">
-                            <img src="../../../../assets/thumbs up.svg">                        
-                        </span>
-                        <ng-template #bw2notcheck>
-                        <span>
-                            <img src="../../../../assets/thumbs up copy.svg">                                
-                        </span>
-                        </ng-template>
-                    </label>
-                    <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
-                        <span *ngIf="bw3.checked else bw3notcheck">
-                            <img src="../../../../assets/thumbs down.svg">                        
-                        </span>
-                        <ng-template #bw3notcheck>
-                            <span>
-                                <img src="../../../../assets/thumbs down copy.svg">                                
-                            </span>
-                        </ng-template>
-                    </label>
+            <ng-container *ngFor="let activity of allActivities; let j = index;">
+                <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
+                    <p fxFlex="100">{{activity.name}}</p>                    
                 </div>
-                </mat-card>
-            </div>
-            <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
+                <div fxFlex="100" fxLayoutGap="2%" fxLayout="row wrap">
+                    <div fxFlex="48" fxLayout="row wrap" fxLayoutAlign="start center"
+                        *ngFor="let workout of activity.workout; let i = index;">
+                        <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
+                            <p fxFlex="45" fxLayout="row wrap" >{{workout?.name}}</p>                            
+                            <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">                               
+                                <mat-radio-group fxFlex="100" fxLayout="row wrap">
+                                    <!-- <label (click)="creatorLikeClicked(workout?.id, workout?.workouts_workoutTypeId, 1, i, event)"> -->
+                                        <mat-radio-button  #bw1 [value]="j*100+i*3+1" 
+                                        (change)="creatorLikeClicked(workout?.id, workout?.workouts_workoutTypeId, 1)">
+                                            <span *ngIf="bw1.checked else bw1notcheck"> 
+                                            <img src="../../../../assets/tick.svg">
+                                        </span>
+                                        <ng-template #bw1notcheck>
+                                            <span>
+                                                <img src="../../../../assets/tick copy.svg">
+                                            </span>
+                                        </ng-template>
+                                        </mat-radio-button>                                        
+                                    <!-- </label> -->
+                                    <!-- <label (click)="creatorLikeClicked(workout?.id, workout?.workouts_workoutTypeId, 2, i,event)"> -->
+                                        <mat-radio-button  #bw2 [value]="j*100+i*3+2" (change)="creatorLikeClicked(workout?.id, workout?.workouts_workoutTypeId, 2)">
+                                            <span *ngIf="bw2.checked else bw2notcheck">
+                                                <img src="../../../../assets/thumbs up.svg">
+                                            </span>
+                                            <ng-template #bw2notcheck>
+                                                <span>
+                                                    <img src="../../../../assets/thumbs up copy.svg">
+                                                </span>
+                                            </ng-template>
+                                        </mat-radio-button>                                        
+                                    <!-- </label>    -->
+                                    <!-- <label (click)="creatorLikeClicked(workout?.id, workout?.workouts_workoutTypeId, 3, i, event)"> -->
+                                        <mat-radio-button  #bw3 [value]="j*100+i*3+3" (change)="creatorLikeClicked(workout?.id, workout?.workouts_workoutTypeId, 3)">
+                                            <span *ngIf="bw3.checked else bw3notcheck">
+                                                <img src="../../../../assets/thumbs down.svg">
+                                            </span>
+                                            <ng-template #bw3notcheck>
+                                                <span>
+                                                    <img src="../../../../assets/thumbs down copy.svg">
+                                                </span>
+                                            </ng-template>
+                                            
+                                        </mat-radio-button>                                       
+                                    <!-- </label> -->
+                                </mat-radio-group>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <!-- <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
                 <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
                     <p fxFlex="45" fxLayout="row wrap">circuit training</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -88,7 +98,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -99,7 +109,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -111,15 +121,15 @@
                     </label>
                 </div>
                 </mat-card>
-            </div>
-           </div>
-           <div fxFlex="100" fxLayoutGap="2%" fxLayout="row wrap">            
+            </div> -->
+                </div>
+                <!-- <div fxFlex="100" fxLayoutGap="2%" fxLayout="row wrap">            
             <div fxFlex="49" fxLayout="row wrap" fxLayoutAlign="start center">
                 <mat-card fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center">
                     <p fxFlex="45" fxLayout="row wrap">Cross fit</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -130,7 +140,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -141,7 +151,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -159,7 +169,7 @@
                     <p fxFlex="45" fxLayout="row wrap">pilates</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -170,7 +180,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -181,7 +191,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -201,7 +211,7 @@
                     <p fxFlex="45" fxLayout="row wrap">Weight training</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -212,7 +222,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -223,7 +233,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -237,10 +247,11 @@
                 </mat-card>
             </div>
             
-           </div>
+           </div> -->
+            </ng-container>
         </div>
 
-        <div fxFlex="100" fxLayout="row wrap" class="activitiesstrength">
+        <!-- <div fxFlex="100" fxLayout="row wrap" class="activitiesstrength">
             <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center">
                 <p fxFlex="100">Cardio</p>
             </div>
@@ -250,7 +261,7 @@
                     <p fxFlex="45" fxLayout="row wrap">boxing / martial arts</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -261,7 +272,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -272,7 +283,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -290,7 +301,7 @@
                     <p fxFlex="45" fxLayout="row wrap">HIIT</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -301,7 +312,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -312,7 +323,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -332,7 +343,7 @@
                     <p fxFlex="45" fxLayout="row wrap">spinning</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -343,7 +354,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -354,7 +365,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -372,7 +383,7 @@
                     <p fxFlex="45" fxLayout="row wrap">treadmill</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -383,7 +394,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -394,7 +405,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -414,7 +425,7 @@
                     <p fxFlex="45" fxLayout="row wrap">Weight training</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -425,7 +436,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -436,7 +447,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -463,7 +474,7 @@
                     <p fxFlex="45" fxLayout="row wrap">foam rolling</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -474,7 +485,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -485,7 +496,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -503,7 +514,7 @@
                     <p fxFlex="45" fxLayout="row wrap">stretching</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -514,7 +525,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -525,7 +536,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -545,7 +556,7 @@
                     <p fxFlex="45" fxLayout="row wrap">yoga</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -556,7 +567,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -567,7 +578,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -585,7 +596,7 @@
                     <p fxFlex="45" fxLayout="row wrap">treadmill</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -596,7 +607,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -607,7 +618,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -627,7 +638,7 @@
                     <p fxFlex="45" fxLayout="row wrap">Weight training</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -638,7 +649,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -649,7 +660,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -676,7 +687,7 @@
                     <p fxFlex="45" fxLayout="row wrap">cycling</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -687,7 +698,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -698,7 +709,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -716,7 +727,7 @@
                     <p fxFlex="45" fxLayout="row wrap">running</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -727,7 +738,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -738,7 +749,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -758,7 +769,7 @@
                     <p fxFlex="45" fxLayout="row wrap">swimming</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -769,7 +780,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -780,7 +791,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -798,7 +809,7 @@
                     <p fxFlex="45" fxLayout="row wrap">treadmill</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -809,7 +820,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -820,7 +831,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -840,7 +851,7 @@
                     <p fxFlex="45" fxLayout="row wrap">Weight training</p>
                     <div fxFlex="55" fxLayout="row wrap" fxLayoutGap="8px" fxLayoutAlign="end">
                     <label>
-                        <mat-checkbox #bw1 value="1"></mat-checkbox>
+                        <mat-radio-button #bw1 value="1"></mat-radio-button>
                         <span *ngIf="bw1.checked else bw1notcheck">
                             <img src="../../../../assets/tick.svg">                        
                         </span>
@@ -851,7 +862,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw2 value="2"></mat-checkbox>
+                        <mat-radio-button #bw2 value="2"></mat-radio-button>
                         <span *ngIf="bw2.checked else bw2notcheck">
                             <img src="../../../../assets/thumbs up.svg">                        
                         </span>
@@ -862,7 +873,7 @@
                         </ng-template>
                     </label>
                     <label>
-                        <mat-checkbox #bw3 value="3"></mat-checkbox>
+                        <mat-radio-button #bw3 value="3"></mat-radio-button>
                         <span *ngIf="bw3.checked else bw3notcheck">
                             <img src="../../../../assets/thumbs down.svg">                        
                         </span>
@@ -880,10 +891,11 @@
            <p fxFlex="100" fxLayoutALign="center">
             <mat-icon>help_outline</mat-icon>What do these mean?
         </p>
-        </div>
-        
+        </div> -->
+
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" class="loginbtn">
-            <button mat-button matStepperNext (click)="activitySubmit()">NEXT</button>
+            <button mat-button (click)="activitySubmit()">NEXT</button>
         </div>
+    </form>
     </mat-card>
 </div>
